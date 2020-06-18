@@ -65,7 +65,7 @@ class Movie extends Component {
         <div className="col s12">
           <Link to="/" className=" movie_home_icon">
             <i class="material-icons medium ">home</i>
-            <hr style={{width:'200px'}}/>
+            <hr style={{ width: "200px" }} />
           </Link>
         </div>
 
