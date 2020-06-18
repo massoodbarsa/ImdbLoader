@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { Link } from "react-router-dom";
 import "../css/movie.scss";
 
 class Movie extends Component {
@@ -90,7 +89,7 @@ class Movie extends Component {
 const mapStateToProps = (state, myProps) => {
   let id = myProps.match.params.movie_id;
 
-  return { movies: state.movies.find((i) => i.id == id) };
+  return { movies: state.movie.movies.find((i) => i.id == id) };
 };
 
 export default connect(mapStateToProps)(Movie);

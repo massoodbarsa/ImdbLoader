@@ -51,13 +51,13 @@ function Movies(props) {
           to={"/" + props.id}
           className="waves-effect waves-light btn-large  cyan lighten-2 "
         >
-          <i class="material-icons large">fast_forward</i>
+          <i className="material-icons large">fast_forward</i>
         </Link>
         <a
           className="waves-effect waves-light btn-large orange darken-2  "
           onClick={handleClick}
         >
-          <i class="material-icons large">delete</i>
+          <i className="material-icons large">delete</i>
         </a>
       </div>
       <div className="movie-image-container ">

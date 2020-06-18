@@ -15,7 +15,7 @@ function App() {
       <div className="App">
         <header className="App-header row ">
           <Link to="/" className="Navbar col s1">
-            <i class="material-icons medium ">home</i>
+            <i className="material-icons medium ">home</i>
           </Link>
 
           <Link to="/" className="col s8 App-logo-container">

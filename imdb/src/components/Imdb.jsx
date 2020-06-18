@@ -30,6 +30,7 @@ class Imdb extends Component {
 
   onChange=(e)=> {
     console.log(e.target.value);
+    debugger
   }
 
   render() {
@@ -66,7 +67,7 @@ class Imdb extends Component {
 }
 
 const mapStateToProps = (state) => {
-  return { movies: state.movies };
+  return { movies: state.movie.movies };
 }; 
 
 
