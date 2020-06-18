@@ -1,6 +1,6 @@
 import React from "react";
 import imdbImg from "./imdb.png";
-import "./App.css";
+import "./App.scss";
 import Imdb from "./components/Imdb";
 import Movie from "./components/Movie";
 import { Link } from "react-router-dom";
@@ -13,8 +13,12 @@ function App() {
   return (
     <BrowserRouter>
       <div className="App">
-        <header className="App-header col s12">
-          <Link to='/'>
+        <header className="App-header row ">
+          <Link to="/" className="Navbar col s1">
+            <i class="material-icons medium ">home</i>
+          </Link>
+
+          <Link to="/" className="col s7 App-logo-container">
             <img src={imdbImg} className="App-logo" alt="logo" />
           </Link>
         </header>

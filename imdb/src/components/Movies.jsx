@@ -19,7 +19,7 @@ function Movies(props) {
   return (
     <li className="movie-section row">
       <div key={props.id} className="col s8">
-        <h3 className="movie-title">{props.title}</h3>
+        <h4 className="movie-title">{props.title}</h4>
 
         {/* <div className="movie-item">
           <h3>Type :</h3>
