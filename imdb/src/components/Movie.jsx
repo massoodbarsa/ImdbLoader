@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import Imdb from "./Imdb";
-import Movies from "./Movies";
+import { Link } from "react-router-dom";
+import "../css/movie.scss";
 
 class Movie extends Component {
   // state = {
@@ -61,14 +61,22 @@ class Movie extends Component {
     // });
 
     return (
-      <div>
-        <h3 className="movie-title">{title}</h3>
-        {/* <p>{title.titleType}</p>
+      <div className="row">
+        <div className="col s12">
+          <Link to="/" className=" movie_home_icon">
+            <i class="material-icons medium ">home</i>
+            <hr style={{width:'200px'}}/>
+          </Link>
+        </div>
+
+        <div className="col s12">
+          <h3 className="movie-title">{title}</h3>
+          {/* <p>{title.titleType}</p>
         <p>{title.seriesStartYear}</p>
         <p>{title.seriesEndYear}</p>
         <p>{title.titleType}</p> */}
-        {/* <p>{title.image}</p> */}
-        {/* <p>Rating:{rating}</p>
+          {/* <p>{title.image}</p> */}
+          {/* <p>Rating:{rating}</p>
         <div style={{ display: "flex" }}>
           <p>gener</p>
           <ul>{gener}</ul>
@@ -79,14 +87,15 @@ class Movie extends Component {
           alt=""
           className="movie-image"
         /> */}
+        </div>
       </div>
     );
   }
 }
-const mapStateToProps = (state,myProps) => {
+const mapStateToProps = (state, myProps) => {
   let id = myProps.match.params.movie_id;
 
-  return { movies: state.movies.find(i=>i.id==id) };
+  return { movies: state.movies.find((i) => i.id == id) };
 };
 
 export default connect(mapStateToProps)(Movie);

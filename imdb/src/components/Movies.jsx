@@ -47,19 +47,18 @@ function Movies(props) {
         </div> */}
       </div>
       <div className="col s3 movie_button_area">
-        <a
-          className="waves-effect waves-light btn-large orange darken-2  "
-          onClick={handleClick}
-        >
-          <i class="material-icons large">delete</i>
-        </a>
-
         <Link
           to={"/" + props.id}
           className="waves-effect waves-light btn-large  cyan lighten-2 "
         >
           <i class="material-icons large">fast_forward</i>
         </Link>
+        <a
+          className="waves-effect waves-light btn-large orange darken-2  "
+          onClick={handleClick}
+        >
+          <i class="material-icons large">delete</i>
+        </a>
       </div>
       <div className="movie-image-container ">
         <img
