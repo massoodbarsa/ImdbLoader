@@ -28,7 +28,7 @@ class Imdb extends Component {
   //     });
   // }
 
-  onChange(e) {
+  onChange=(e)=> {
     console.log(e.target.value);
   }
 
@@ -36,13 +36,13 @@ class Imdb extends Component {
     console.log(this.props);
 
     return (
-      <div>
-        <section className="search-area">
-          <label >Search movie</label>
+      <div className='row'>
+        <section className="search-area input-field">
+          <label >Search</label>
           <input
             type="text"
             className="search-input"
-            onChange={this.onChange.bind(this)}
+            onChange={this.onChange}
           />
         </section>
         <section className="col s12">

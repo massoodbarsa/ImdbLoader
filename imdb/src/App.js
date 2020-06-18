@@ -18,7 +18,7 @@ function App() {
             <i class="material-icons medium ">home</i>
           </Link>
 
-          <Link to="/" className="col s7 App-logo-container">
+          <Link to="/" className="col s8 App-logo-container">
             <img src={imdbImg} className="App-logo" alt="logo" />
           </Link>
         </header>
