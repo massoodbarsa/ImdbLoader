@@ -1,0 +1,52 @@
+.movie-section {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  border-bottom: 1px solid #286b92;
+}
+
+.movie_button_area{
+  display: flex;
+  flex-direction: column;
+    justify-content: space-around;
+   
+
+}
+
+.movie-title {
+  color: #286b92;
+  font-weight: bold;
+  display: flex;
+  flex-direction: row;
+  margin-left: 30px;
+  text-transform: capitalize;
+  
+}
+.movie-item {
+  display: flex;
+  flex-direction: row;
+  margin-left: 30px;
+  p {
+    margin-left: 10px;
+    padding-top: 6px;
+  }
+}
+
+.movie-image {
+  width: 300px;
+  height: 300px;
+  margin: 30px;
+}
+
+.movie-image-container {
+  display: flex;
+  align-items: center;
+}
+.click-me {
+  background-color: red;
+  height: 300px;
+  border-radius: 5px;
+  p {
+    // transform: rotate(90deg);
+  }
+}

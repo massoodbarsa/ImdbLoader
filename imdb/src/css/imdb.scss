@@ -1,0 +1,23 @@
+.search-area {
+  padding: 30px;
+  display: flex;
+  border-bottom: 5px solid #7996a7;
+  label {
+    margin-right: 10px;
+    font-size: large;
+    padding-top: 8px;
+    font-weight: 700;
+    color: #212121;
+    width: 20%;
+    letter-spacing: 0.2em;
+  }
+}
+
+.search-input {
+  height: 30px;
+  width: 40%;
+  border-radius: 5px;
+  outline: none;
+  font-size: 20px;
+  color: #7996a7;
+}
