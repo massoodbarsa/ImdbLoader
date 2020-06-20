@@ -46,7 +46,13 @@ class Movie extends Component {
   // }
   render() {
     // const { title, rating, genres } = this.state;
-    const { title, image ,titleType,seriesStartYear,seriesEndYear} = this.props.movies;
+    const {
+      title,
+      image,
+      titleType,
+      seriesStartYear,
+      seriesEndYear,
+    } = this.props.movies;
     let id = this.props.match.params.movie_id;
     console.log(this.props.movies);
 
@@ -81,7 +87,7 @@ const mapStateToProps = (state, myProps) => {
   let id = myProps.match.params.movie_id;
 
   return {
-    movies: state.movie.movies.find((i) => i.id == "/title/" + id + "/"),
+    movies: state.movie.movies.find((i) => i.id == `/title/${id}/`),
   };
 };
 
