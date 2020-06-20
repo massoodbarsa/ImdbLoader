@@ -5,15 +5,16 @@ const initState = {
     { id: 3, title: "interstellar" },
     { id: 4, title: "geladiator" },
   ],
-  search: "",
 };
 
 const movieReducer = (state = initState, action) => {
   switch (action.type) {
     case "LOAD_SEARCHED_MOVIE":
+      console.log(typeof action.searchedItem);
+
       return {
         ...state,
-        search: action.searchedItem,
+        movies: action.searchedItem,
       };
 
     case "DELETE_MOVIE":
@@ -27,7 +28,6 @@ const movieReducer = (state = initState, action) => {
         };
       }
   }
-
   return state;
 };
 

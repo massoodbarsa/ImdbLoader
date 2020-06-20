@@ -41,7 +41,7 @@ class Imdb extends Component {
   };
 
   render() {
-    const { movies, search } = this.props;
+    const { movies } = this.props;
     return (
       <div className="row">
         <section className="search-area input-field">
@@ -59,7 +59,6 @@ class Imdb extends Component {
           </a>{" "}
         </section>
         <section className="col s12">
-          <p>{search}</p>
           {movies.map((item) => (
             <Movies
               key={item.id}
@@ -80,7 +79,7 @@ class Imdb extends Component {
 }
 
 const mapStateToProps = (state) => {
-  return { movies: state.movie.movies, search: state.movie.search };
+  return { movies: state.movie.movies };
 };
 
 const mapDispatchToProps = (dispatch) => {
