@@ -46,14 +46,14 @@ class Movie extends Component {
   // }
   render() {
     // const { title, rating, genres } = this.state;
-    const { title } = this.props.movies;
+    const { title, image ,titleType,seriesStartYear,seriesEndYear} = this.props.movies;
+    let id = this.props.match.params.movie_id;
+    console.log(this.props.movies);
 
-    // const url =
-    // title.image !== undefined || null
-    //   ? Object.values(title.image).filter((item) => item !== undefined)
-    //   : "";
-
-    console.log(title);
+    const url =
+      image !== undefined || null
+        ? Object.values(image).filter((item) => item !== undefined)
+        : "";
 
     // const gener = genres.map((item) => {
     //   return <li key={item}>{item}</li>;
@@ -61,26 +61,17 @@ class Movie extends Component {
 
     return (
       <div className="row">
-       
-
         <div className="col s12">
           <h3 className="movie-title">{title}</h3>
-          {/* <p>{title.titleType}</p>
-        <p>{title.seriesStartYear}</p>
-        <p>{title.seriesEndYear}</p>
-        <p>{title.titleType}</p> */}
-          {/* <p>{title.image}</p> */}
-          {/* <p>Rating:{rating}</p>
-        <div style={{ display: "flex" }}>
-          <p>gener</p>
-          <ul>{gener}</ul>
-        </div>
-
-        <img
-          src={url[2]}
-          alt=""
-          className="movie-image"
-        /> */}
+          <p>{titleType}</p>
+          <p>{seriesStartYear}</p>
+          <p>{seriesEndYear}</p>
+          {/* <p>Rating:{rating}</p> */}
+          {/* <div style={{ display: "flex" }}>
+            <p>gener</p>
+            <ul>{gener}</ul>
+          </div> */}
+          <img src={url[2]} alt="" className="movie-image" />
         </div>
       </div>
     );
@@ -89,7 +80,9 @@ class Movie extends Component {
 const mapStateToProps = (state, myProps) => {
   let id = myProps.match.params.movie_id;
 
-  return { movies: state.movie.movies.find((i) => i.id == id) };
+  return {
+    movies: state.movie.movies.find((i) => i.id == "/title/" + id + "/"),
+  };
 };
 
 export default connect(mapStateToProps)(Movie);

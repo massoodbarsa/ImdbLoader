@@ -6,8 +6,6 @@ export const deleteMovie = (id) => {
 };
 
 export const loadMovieFromApi = (searchedItem) => {
-  console.log(searchedItem);
-
   return (dispatch, getState) => {
     fetch(`https://imdb8.p.rapidapi.com/title/find?q=${searchedItem}`, {
       method: "GET",

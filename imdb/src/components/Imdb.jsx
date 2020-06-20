@@ -40,6 +40,30 @@ class Imdb extends Component {
     this.props.loadMovieFromApi(this.state.search);
   };
 
+  loadPage = () => {
+    const { movies } = this.props;
+
+    if (movies) {
+      return (
+        <section className="col s12">
+          {movies.map((item) => (
+            <Movies
+              key={item.id}
+              id={item.id}
+              title={item.title}
+              type={item.titleType}
+              numberOfEpisodes={item.numberOfEpisodes}
+              year={item.year}
+              seriesStartYear={item.seriesStartYear}
+              seriesEndYear={item.seriesStartYear}
+              image={item.image}
+            />
+          ))}
+        </section>
+      );
+    } else return <div>hallo</div>;
+  };
+
   render() {
     const { movies } = this.props;
     return (
@@ -58,21 +82,7 @@ class Imdb extends Component {
             <i className="material-icons">search</i>
           </a>{" "}
         </section>
-        <section className="col s12">
-          {movies.map((item) => (
-            <Movies
-              key={item.id}
-              id={item.id}
-              title={item.title}
-              // type={item.titleType}
-              // numberOfEpisodes={item.numberOfEpisodes}
-              // year={item.year}
-              // seriesStartYear={item.seriesStartYear}
-              // seriesEndYear={item.seriesStartYear}
-              // image={item.image}
-            />
-          ))}
-        </section>
+        {this.loadPage()}
       </div>
     );
   }
