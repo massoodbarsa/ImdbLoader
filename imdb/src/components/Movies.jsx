@@ -2,7 +2,7 @@ import React from "react";
 import "../css/movies.scss";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
-import { deleteMovie } from "../actions/moviesAction";
+import { deleteMovie } from "../Store/actions/moviesAction";
 
 function Movies(props) {
   // const url =

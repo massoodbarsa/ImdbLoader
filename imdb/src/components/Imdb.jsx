@@ -2,12 +2,12 @@ import React, { Component } from "react";
 import "../css/imdb.scss";
 import Movies from "./Movies";
 import { connect } from "react-redux";
+import { loadMovieFromApi } from "../Store/actions/moviesAction";
 
 class Imdb extends Component {
-  // state = {
-  //   movies: [],
-  //   search: "",
-  // };
+  state = {
+    search: "",
+  };
 
   // componentDidMount() {
   //   fetch(`https://imdb8.p.rapidapi.com/title/find?q=breaking bad`, {
@@ -28,26 +28,39 @@ class Imdb extends Component {
   //     });
   // }
 
-  onChange=(e)=> {
-    console.log(e.target.value);
-    debugger
-  }
+  handleChange = (e) => {
+    this.setState({
+      search: e.target.value,
+    });
+  };
 
-  render() {
+  handleClick = () => {
     console.log(this.props);
 
+    this.props.loadMovieFromApi(this.state.search);
+  };
+
+  render() {
+    const { movies, search } = this.props;
     return (
-      <div className='row'>
+      <div className="row">
         <section className="search-area input-field">
-          <label >Search</label>
+          <label>Search</label>
           <input
             type="text"
             className="search-input"
-            onChange={this.onChange}
+            onChange={this.handleChange}
           />
+          <a
+            className="btn-floating btn-large waves-effect waves-light cyan lighten-2 "
+            onClick={this.handleClick}
+          >
+            <i className="material-icons">search</i>
+          </a>{" "}
         </section>
         <section className="col s12">
-          {this.props.movies.map((item) => (
+          <p>{search}</p>
+          {movies.map((item) => (
             <Movies
               key={item.id}
               id={item.id}
@@ -67,9 +80,14 @@ class Imdb extends Component {
 }
 
 const mapStateToProps = (state) => {
-  return { movies: state.movie.movies };
-}; 
+  return { movies: state.movie.movies, search: state.movie.search };
+};
 
+const mapDispatchToProps = (dispatch) => {
+  return {
+    loadMovieFromApi: (searchedItem) =>
+      dispatch(loadMovieFromApi(searchedItem)),
+  };
+};
 
-
-export default connect(mapStateToProps)(Imdb);
+export default connect(mapStateToProps, mapDispatchToProps)(Imdb);
