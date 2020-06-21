@@ -1,11 +1,9 @@
 const initState = {
   movies: [],
-  movieOverview:[]
+  movieOverview: [],
 };
 
 const movieReducer = (state = initState, action) => {
-  console.log(state);
-  
   switch (action.type) {
     case "LOAD_SEARCHED_MOVIE":
       return {
@@ -22,12 +20,12 @@ const movieReducer = (state = initState, action) => {
           ...state,
           movies: newMovies,
         };
+      }
+    case "OVERVIEW_SELECTED_MOVIE":
+      return {
+        ...state,
+        movieOverview: action.selectedItem,
       };
-      case 'OVERVIEW_SELECTED_MOVIE':
-        return {
-          ...state,
-          movieOverview: action.selectedItem,
-        };        
   }
   return state;
 };

@@ -1,10 +1,28 @@
+@import "movies.scss";
 
-.movie_overview{
-    margin-top: 40px;
-    background-color: green;
-
+.movie_overview {
+  margin-top: 40px;
+//   background-color: green;
 }
 
-.movie_image_container{
-    background-color: red;
+.movie_image_container {
+    // border-left: 1px dotted paleturquoise;
+}
+
+#movie-title {
+  @extend .movies-title;
+  padding: 10px;
+}
+
+.movie-contents {
+  display: flex;
+  margin:0 20px
+}
+
+.movie-results {
+  padding-bottom: 20px;
+}
+
+#summary {
+  text-align: left;
 }

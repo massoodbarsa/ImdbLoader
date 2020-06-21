@@ -6,11 +6,12 @@ import { loadMovieFromApi } from "../Store/actions/moviesAction";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSearch, faFileDownload } from "@fortawesome/free-solid-svg-icons";
 import { Input, Button, Card, Typography } from "@material-ui/core";
-import Badge from '@material-ui/core/Badge';
-import MailIcon from '@material-ui/icons/Mail';
+import Badge from "@material-ui/core/Badge";
+import MailIcon from "@material-ui/icons/Mail";
 class Imdb extends Component {
   state = {
     search: "",
+    pageMovieLength: "",
   };
 
   handleChange = (e) => {
@@ -54,8 +55,13 @@ class Imdb extends Component {
       );
   };
 
+  pageContentLength = () => {
+    const length = this.props.movies.filter((item) => item.title !== undefined);
+
+    return length.length;
+  };
+
   render() {
-    
     return (
       <div className="">
         <section className="search-area">
@@ -74,8 +80,12 @@ class Imdb extends Component {
               <FontAwesomeIcon icon={faSearch} size="2x" color="#286b92" />
             </Button>
           </a>
-          <Badge color="secondary" badgeContent={Object.keys(this.props.movies).length}>
-          <FontAwesomeIcon icon={faFileDownload} size="2x" color="#286b92" />
+          <Badge
+            color="secondary"
+            badgeContent={this.pageContentLength()}
+            onClick={this.pageContentLength}
+          >
+            <FontAwesomeIcon icon={faFileDownload} size="2x" color="#286b92" />
           </Badge>
         </section>
 

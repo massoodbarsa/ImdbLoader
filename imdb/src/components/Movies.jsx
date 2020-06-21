@@ -29,7 +29,7 @@ function Movies(props) {
     <Grid item xs={12}>
       <li className="movie-section ">
         <Grid key={props.id} item xs={6}>
-          <h2 className="movie-title">{props.title}</h2>
+          <h2 className="movies-title">{props.title}</h2>
 
           <div className="movie-item">
             <h4>Type :</h4>
