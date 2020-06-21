@@ -4,9 +4,10 @@ import Movies from "./Movies";
 import { connect } from "react-redux";
 import { loadMovieFromApi } from "../Store/actions/moviesAction";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faSearch } from "@fortawesome/free-solid-svg-icons";
-import { Input, Button, Card,Typography } from "@material-ui/core";
-
+import { faSearch, faFileDownload } from "@fortawesome/free-solid-svg-icons";
+import { Input, Button, Card, Typography } from "@material-ui/core";
+import Badge from '@material-ui/core/Badge';
+import MailIcon from '@material-ui/icons/Mail';
 class Imdb extends Component {
   state = {
     search: "",
@@ -46,17 +47,15 @@ class Imdb extends Component {
     } else
       return (
         <Card>
-          <Typography
-            color="textSecondary"
-            variant="h5"
-          >
-            There is no result for your search 
+          <Typography color="textSecondary" variant="h5">
+            There is no result for your search
           </Typography>
         </Card>
       );
   };
 
   render() {
+    
     return (
       <div className="">
         <section className="search-area">
@@ -66,7 +65,6 @@ class Imdb extends Component {
             className="search-input"
             onChange={this.handleChange}
             color="primary"
-            classes="input"
           />
           <a
             className="btn-floating btn-large waves-effect waves-light cyan lighten-2 "
@@ -76,6 +74,9 @@ class Imdb extends Component {
               <FontAwesomeIcon icon={faSearch} size="2x" color="#286b92" />
             </Button>
           </a>
+          <Badge color="secondary" badgeContent={Object.keys(this.props.movies).length}>
+          <FontAwesomeIcon icon={faFileDownload} size="2x" color="#286b92" />
+          </Badge>
         </section>
 
         {this.loadPage()}

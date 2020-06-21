@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import "../css/movie.scss";
+import { Grid } from "@material-ui/core";
 
 class Movie extends Component {
   render() {
@@ -44,11 +45,10 @@ class Movie extends Component {
     //   });
 
     return (
-      <div className="row">
-        <div className="col s8 movie_overview" >
+      <Grid className="" container>
+        <Grid item xs={8} className="movie_overview">
           <form>
-
-            
+            <ul>hier content</ul>
           </form>
           {/* <h3 className="movie-title">{title}</h3> */}
           {/* <p>{titleType}</p> */}
@@ -62,14 +62,13 @@ class Movie extends Component {
             <p>gener</p>
             <ul>{gener}</ul>
           </div> */}
-        </div>
-        <div className="col s4 movie_image_container">
+        </Grid>
+        <Grid className="movie_image_container" item xs={4}>
           {" "}
           {/* <img src={url[2]} alt="" className="movie-image" /> */}
-                    <img  alt="" className="movie-image" />
-
-        </div>
-      </div>
+          <img alt="" className="movie-image" />
+        </Grid>
+      </Grid>
     );
   }
 }

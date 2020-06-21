@@ -2,13 +2,13 @@
   padding: 40px;
   display: flex;
   border-bottom: 1px dotted #212121;
+  justify-content: space-evenly;
 
   label {
     font-size: large;
     padding-top: 8px;
     font-weight: 700;
     color: #212121;
-    width: 20%;
     letter-spacing: 0.2em;
   }
 }
