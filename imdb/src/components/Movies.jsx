@@ -2,7 +2,11 @@ import React from "react";
 import "../css/movies.scss";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
-import { deleteMovie } from "../Store/actions/moviesAction";
+import { deleteMovie, getOverview } from "../Store/actions/moviesAction";
+import { Grid, LinearProgress, Button } from "@material-ui/core";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+
+import { faForward, faTrash } from "@fortawesome/free-solid-svg-icons";
 
 function Movies(props) {
   const url =
@@ -14,60 +18,69 @@ function Movies(props) {
     props.deleteMovie(props.id);
   };
 
+  const handlSelectMovie = () => {
+    // console.log(props.getOverview);
+    props.getOverview(props.id.slice(7));
+  };
+
   if (typeof props.title === "undefined") return null;
 
   return (
-    <li className="movie-section row">
-      <div key={props.id} className="col s8">
-        <h4 className="movie-title">{props.title}</h4>
+    <Grid item xs={12}>
+      <li className="movie-section ">
+        <Grid key={props.id} item xs={6}>
+          <h2 className="movie-title">{props.title}</h2>
 
-        <div className="movie-item">
-          <h6>Type :</h6>
-          <p>{props.type || "..."}</p>
-        </div>
+          <div className="movie-item">
+            <h4>Type :</h4>
+            <p>{props.type || "..."}</p>
+          </div>
 
-        <div className="movie-item">
-          <h6>Number of episodes :</h6>
-          <p>{props.numberOfEpisodes || "..."}</p>
-        </div>
+          <div className="movie-item">
+            <h4>Number of episodes :</h4>
+            <p>{props.numberOfEpisodes || "..."}</p>
+          </div>
 
-        <div className="movie-item">
-          <h6>Year :</h6>
-          <p>{props.year || "..."}</p>
-        </div>
+          <div className="movie-item">
+            <h4>Year :</h4>
+            <p>{props.year || "..."}</p>
+          </div>
 
-        <div className="movie-item">
-          <h6>Start Year :</h6>
-          <p>{props.seriesStartYear || "..."}</p>
-        </div>
+          {/* <div className="movie-item">
+            <h6>Start Year :</h6>
+            <p>{props.seriesStartYear || "..."}</p>
+          </div> */}
 
-        <div className="movie-item">
-          <h6>End Year :</h6>
-          <p>{props.seriesEndYear || "..."}</p>
-        </div>
-      </div>
-      <div className="col s3 movie_button_area">
-        <Link
-          to={"/" + props.id.slice(7)}
-          className="waves-effect waves-light btn-large  cyan lighten-2 "
-        >
-          <i className="material-icons large">fast_forward</i>
-        </Link>
-        <a
-          className="waves-effect waves-light btn-large orange darken-2  "
-          onClick={handleClick}
-        >
-          <i className="material-icons large">delete</i>
-        </a>
-      </div>
-      <div className="movie-image-container ">
-        <img
-          src={url[2]}
-          alt=""
-          className="movie-image"
-        />
-      </div>
-    </li>
+          {/* <div className="movie-item">
+            <h6>End Year :</h6>
+            <p>{props.seriesEndYear || "..."}</p>
+          </div> */}
+        </Grid>
+        <Grid className="movie_button_area" item xs={2}>
+          <Link
+            to={"/" + props.id.slice(7)}
+            onClick={handlSelectMovie}
+          >
+            <Button
+              color="primary"
+              variant="contained"
+            >
+              <FontAwesomeIcon icon={faForward} size="2x" color="#ffffff" />
+            </Button>
+          </Link>
+          <a
+            onClick={handleClick}
+          >
+            <Button color="secondary" variant="contained">
+              <FontAwesomeIcon icon={faTrash} size="2x" color="#ffffff" />
+            </Button>
+          </a>
+        </Grid>
+        <Grid className="movie-image-container " item xs={4}>
+          <img src={url[2]} alt="" className="movie-image" />
+        </Grid>
+      </li>
+    </Grid>
   );
 }
 
@@ -76,6 +89,7 @@ const mapDispatchToProps = (dispatch) => {
     deleteMovie: (id) => {
       dispatch(deleteMovie(id));
     },
+    getOverview: (id) => dispatch(getOverview(id)),
   };
 };
 export default connect(null, mapDispatchToProps)(Movies);

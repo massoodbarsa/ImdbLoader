@@ -3,30 +3,14 @@ import "../css/imdb.scss";
 import Movies from "./Movies";
 import { connect } from "react-redux";
 import { loadMovieFromApi } from "../Store/actions/moviesAction";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faSearch } from "@fortawesome/free-solid-svg-icons";
+import { Input, Button, Card,Typography } from "@material-ui/core";
 
 class Imdb extends Component {
   state = {
     search: "",
   };
-
-  // componentDidMount() {
-  //   fetch(`https://imdb8.p.rapidapi.com/title/find?q=breaking bad`, {
-  //     method: "GET",
-  //     headers: {
-  //       "x-rapidapi-host": "imdb8.p.rapidapi.com",
-  //       "x-rapidapi-key": "fe127e3e7cmsh8debc737b522bd7p16be58jsn707dda0c02c1",
-  //     },
-  //   })
-  //     .then((response) => response.json())
-  //     .then((data) =>
-  //       this.setState({
-  //         movies: data.results,
-  //       })
-  //     )
-  //     .catch((err) => {
-  //       console.log(err);
-  //     });
-  // }
 
   handleChange = (e) => {
     this.setState({
@@ -35,8 +19,6 @@ class Imdb extends Component {
   };
 
   handleClick = () => {
-    console.log(this.props);
-
     this.props.loadMovieFromApi(this.state.search);
   };
 
@@ -45,7 +27,7 @@ class Imdb extends Component {
 
     if (movies) {
       return (
-        <section className="col s12">
+        <section className="">
           {movies.map((item) => (
             <Movies
               key={item.id}
@@ -61,27 +43,41 @@ class Imdb extends Component {
           ))}
         </section>
       );
-    } else return <div>hallo</div>;
+    } else
+      return (
+        <Card>
+          <Typography
+            color="textSecondary"
+            variant="h5"
+          >
+            There is no result for your search 
+          </Typography>
+        </Card>
+      );
   };
 
   render() {
-    const { movies } = this.props;
     return (
-      <div className="row">
-        <section className="search-area input-field">
+      <div className="">
+        <section className="search-area">
           <label>Search</label>
-          <input
+          <Input
             type="text"
             className="search-input"
             onChange={this.handleChange}
+            color="primary"
+            classes="input"
           />
           <a
             className="btn-floating btn-large waves-effect waves-light cyan lighten-2 "
             onClick={this.handleClick}
           >
-            <i className="material-icons">search</i>
-          </a>{" "}
+            <Button color="primary">
+              <FontAwesomeIcon icon={faSearch} size="2x" color="#286b92" />
+            </Button>
+          </a>
         </section>
+
         {this.loadPage()}
       </div>
     );

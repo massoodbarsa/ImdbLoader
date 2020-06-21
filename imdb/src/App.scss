@@ -3,11 +3,13 @@
 }
 .App-logo-container {
   display: flex;
+  justify-content: center;
 }
 .App-logo {
   height: 20vmin;
   padding: 10px;
   align-self: flex-start;
+  
 }
 
 .App-header {
@@ -25,7 +27,7 @@
   color: #61dafb;
 }
 
-.Navbar {
-  display: flex;
-  position: absolute;
+.Home_icon{
+  justify-self: start;
+  left: 200px;
 }

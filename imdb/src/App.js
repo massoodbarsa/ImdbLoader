@@ -4,27 +4,31 @@ import "./App.scss";
 import Imdb from "./components/Imdb";
 import Movie from "./components/Movie";
 import { Link } from "react-router-dom";
-import "materialize-css/dist/css/materialize.min.css";
-import "materialize-css/dist/js/materialize.min.js";
+import Grid from "@material-ui/core/Grid";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faHome} from "@fortawesome/free-solid-svg-icons";
 
 import { BrowserRouter, Route } from "react-router-dom";
 
 function App() {
   return (
     <BrowserRouter>
-      <div className="App">
-        <header className="App-header row ">
-          <Link to="/" className="Navbar col s1">
-            <i className="material-icons medium ">home</i>
-          </Link>
-
-          <Link to="/" className="col s8 App-logo-container">
-            <img src={imdbImg} className="App-logo" alt="logo" />
-          </Link>
-        </header>
+      <Grid className="App">
+        <Grid className="App-header container">
+          <Grid item xs={2} className="Home_icon" >
+            <Link to="/" >
+            <FontAwesomeIcon icon={faHome} size="2x" color="#286b92" />
+            </Link>
+          </Grid>
+          <Grid item xs={8} className=" App-logo-container">
+            <Link to="/" >
+              <img src={imdbImg} className="App-logo" alt="logo" />
+            </Link>
+          </Grid>
+        </Grid>
         <Route exact path="/" component={Imdb} />
         <Route path="/:movie_id" component={Movie} />
-      </div>
+      </Grid>
     </BrowserRouter>
   );
 }
