@@ -24,10 +24,16 @@ class Imdb extends Component {
     this.props.loadMovieFromApi(this.state.search);
   };
 
+  pageContentLength = () => {
+    const length = this.props.movies.filter((item) => item.title !== undefined);
+
+    return length.length;
+  };
+
   loadPage = () => {
     const { movies } = this.props;
 
-    if (movies) {
+    if (movies.length !== 0 || movies === undefined) {
       return (
         <section className="">
           {movies.map((item) => (
@@ -49,16 +55,10 @@ class Imdb extends Component {
       return (
         <Card>
           <Typography color="textSecondary" variant="h5">
-            There is no result for your search
+           Search your favorite movie or serie
           </Typography>
         </Card>
       );
-  };
-
-  pageContentLength = () => {
-    const length = this.props.movies.filter((item) => item.title !== undefined);
-
-    return length.length;
   };
 
   render() {

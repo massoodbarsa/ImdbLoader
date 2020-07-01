@@ -2,11 +2,14 @@ import React from "react";
 import "../css/movies.scss";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
-import { deleteMovie, getOverview } from "../Store/actions/moviesAction";
+import {
+  deleteMovie,
+  getOverview,
+  getVideo,
+} from "../Store/actions/moviesAction";
 import { Grid, LinearProgress, Button } from "@material-ui/core";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faForward, faTrash } from "@fortawesome/free-solid-svg-icons";
-
 
 function Movies(props) {
   const url =
@@ -18,9 +21,9 @@ function Movies(props) {
     props.deleteMovie(props.id);
   };
 
-  const handlSelectMovie = () => {
-    // console.log(props.getOverview);
+   const handlSelectMovie = () => {
     props.getOverview(props.id.slice(7));
+    props.getVideo(props.id.slice(7))
   };
 
   if (typeof props.title === "undefined") return null;
@@ -45,32 +48,14 @@ function Movies(props) {
             <h4>Year :</h4>
             <p>{props.year || "..."}</p>
           </div>
-
-          {/* <div className="movie-item">
-            <h6>Start Year :</h6>
-            <p>{props.seriesStartYear || "..."}</p>
-          </div> */}
-
-          {/* <div className="movie-item">
-            <h6>End Year :</h6>
-            <p>{props.seriesEndYear || "..."}</p>
-          </div> */}
         </Grid>
         <Grid className="movie_button_area" item xs={2}>
-          <Link
-            to={"/" + props.id.slice(7)}
-            onClick={handlSelectMovie}
-          >
-            <Button
-              color="primary"
-              variant="contained"
-            >
+          <Link to={"/" + props.id.slice(7)} onClick={handlSelectMovie}>
+            <Button color="primary" variant="contained">
               <FontAwesomeIcon icon={faForward} size="2x" color="#ffffff" />
             </Button>
           </Link>
-          <a
-            onClick={handleClick}
-          >
+          <a onClick={handleClick}>
             <Button color="secondary" variant="contained">
               <FontAwesomeIcon icon={faTrash} size="2x" color="#ffffff" />
             </Button>
@@ -90,6 +75,7 @@ const mapDispatchToProps = (dispatch) => {
       dispatch(deleteMovie(id));
     },
     getOverview: (id) => dispatch(getOverview(id)),
+    getVideo: (id) => dispatch(getVideo(id)),
   };
 };
 export default connect(null, mapDispatchToProps)(Movies);

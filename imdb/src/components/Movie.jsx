@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import "../css/movie.scss";
 import { Grid, Card, CardContent, Typography } from "@material-ui/core";
+import Actor from "./Actor";
+import { getOverview } from "../Store/actions/moviesAction";
 
 class Movie extends Component {
   render() {
@@ -11,6 +13,8 @@ class Movie extends Component {
       titleType,
       seriesStartYear,
       seriesEndYear,
+      runningTimeInMinutes,
+      principals,
     } = this.props.movies;
 
     const {
@@ -35,13 +39,21 @@ class Movie extends Component {
         ? Object.values(plotSummary).filter((item) => item !== undefined)
         : "";
 
-    console.log(this.props.movieOverview);
-    console.log(summary);
+    // console.log(this.props.movieOverview);
+    // console.log(this.props.movies.title);
+    // console.log(this.props.movieVideo.resource.title);
 
     const gener =
       genres &&
       genres.map((item) => {
         return <li key={item}>{item}</li>;
+      });
+
+    const video =
+      this.props.movieVideo.videos &&
+      this.props.movieVideo.videos.map((item) => {
+        item;
+        // return <li key={item.contentType}>{item}</li>;
       });
 
     return (
@@ -52,97 +64,125 @@ class Movie extends Component {
           </Typography>
           <form>
             <Card className="movie-contents">
-              <Grid  item xs={6}>
+              <Grid item xs={6}>
                 <CardContent>
-                  <Typography color="textSecondary" gutterBottom >MovieType</Typography>
-                  <Typography variant="body2" component="p"  className='movie-results'>
-               
+                  <Typography color="textSecondary" gutterBottom>
+                    MovieType
+                  </Typography>
+                  <Typography
+                    variant="body2"
+                    component="p"
+                    className="movie-results"
+                  >
                     {titleType}
                     <br />
                   </Typography>
 
-                  <Typography color="textSecondary" gutterBottom>Start year</Typography>
-                  <Typography variant="body2" component="p"  className='movie-results'>
-                    
-                    {seriesStartYear || '...'}
-                  <br />
+                  <Typography color="textSecondary" gutterBottom>
+                    Start year
+                  </Typography>
+                  <Typography
+                    variant="body2"
+                    component="p"
+                    className="movie-results"
+                  >
+                    {seriesStartYear || "..."}
+                    <br />
                   </Typography>
 
-                  <Typography color="textSecondary" gutterBottom>End year</Typography>
-                  <Typography variant="body2" component="p"  className='movie-results'>
-                    
-                    {seriesEndYear || '...'}
-                  <br />
+                  <Typography color="textSecondary" gutterBottom>
+                    End year
+                  </Typography>
+                  <Typography
+                    variant="body2"
+                    component="p"
+                    className="movie-results"
+                  >
+                    {seriesEndYear || "..."}
+                    <br />
                   </Typography>
 
-                  <Typography color="textSecondary" gutterBottom>Realeas date</Typography>
-                  <Typography variant="body2" component="p"  className='movie-results'>
-                    
-                    {releaseDate || '...'}
-                  <br />
+                  <Typography color="textSecondary" gutterBottom>
+                    Realeas date
+                  </Typography>
+                  <Typography
+                    variant="body2"
+                    component="p"
+                    className="movie-results"
+                  >
+                    {releaseDate || "..."}
+                    <br />
                   </Typography>
 
-                  <Typography color="textSecondary" gutterBottom>Summary</Typography>
-                  <Typography variant="body2" component="p"  className='movie-results' id='summary'>
-                    
-                    {summary || '...'}
-                  <br />
+                  <Typography color="textSecondary" gutterBottom>
+                    Summary
+                  </Typography>
+                  <Typography
+                    variant="body2"
+                    component="p"
+                    className="movie-results"
+                    id="summary"
+                  >
+                    {summary[2] || "..."}
+                    <br />
                   </Typography>
                 </CardContent>
               </Grid>
 
               <Grid className="" item xs={6}>
                 <CardContent>
-                  <Typography color="textSecondary" gutterBottom>Rating</Typography>
-                  <Typography variant="body2" component="p"  className='movie-results'>
-                    
-                    {rating || '...'}
-                  <br />
+                  <Typography color="textSecondary" gutterBottom>
+                    Rating
+                  </Typography>
+                  <Typography
+                    variant="body2"
+                    component="p"
+                    className="movie-results"
+                  >
+                    {rating[1] || "..."}
+                    <br />
                   </Typography>
 
-                  <Typography color="textSecondary" gutterBottom>movieType</Typography>
-                  <Typography variant="body2" component="p"  className='movie-results'>
+                  <Typography color="textSecondary" gutterBottom>
+                    Duration
+                  </Typography>
+                  <Typography
+                    variant="body2"
+                    component="p"
+                    className="movie-results"
+                  >
+                    {runningTimeInMinutes}
+
+                    <br />
+                  </Typography>
+
+                  <Typography color="textSecondary" gutterBottom>
+                    movieType
+                  </Typography>
+                  <Typography
+                    variant="body2"
+                    component="p"
+                    className="movie-results"
+                  >
                     <br />
                     {'"a benevolent smile"'}
                   </Typography>
 
-                  <Typography color="textSecondary" gutterBottom>movieType</Typography>
-                  <Typography variant="body2" component="p"  className='movie-results'>
-                    <br />
-                    {'"a benevolent smile"'}
-                  </Typography>
-
-                  <Typography color="textSecondary" gutterBottom>movieType</Typography>
-                  <Typography variant="body2" component="p"  className='movie-results'>
-                    <br />
-                    {'"a benevolent smile"'}
-                  </Typography>
-
-                  <Typography color="textSecondary" gutterBottom>movieType</Typography>
-                  <Typography variant="body2" component="p"  className='movie-results'>
-                    <br />
-                    {'"a benevolent smile"'}
-                  </Typography>
                 </CardContent>
               </Grid>
             </Card>
           </form>
-          {/* <h3 className="movie-title">{title}</h3> */}
-          {/* <p>{titleType}</p> */}
-          {/* <p>{seriesStartYear}</p> */}
-          {/* <p>{seriesEndYear}</p> */}
-          {/* <p>Rating:{rating[1]}</p> */}
-          {/* <p>certificates:{certificates}</p> */}
-          {/* <p>releaseDate:{releaseDate}</p> */}
-          {/* <p>summary:{summary[2]}</p> */}
-          {/* <div>
-            <p>gener</p>
-            <ul>{gener}</ul>
-          </div> */}
         </Grid>
         <Grid className="movie_image_container" item xs={4}>
-          {" "}
           <img src={url[2]} alt="" className="movie-image" />
+          <Actor actors={principals} />
+
+        </Grid>
+        <Grid item xs={12}>
+          <iframe
+            src="https://www.imdb.com/video/imdb/vi2628367897/imdb/embed?autoplay=false&width=1000"
+            id="movie_trailer"
+          ></iframe>
         </Grid>
       </Grid>
     );
@@ -156,6 +196,7 @@ const mapStateToProps = (state, myProps) => {
     movies: state.movie.movies.find((i) => i.id == `/title/${id}/`),
 
     movieOverview: state.movie.movieOverview,
+    movieVideo: state.movie.movieVideo,
   };
 };
 

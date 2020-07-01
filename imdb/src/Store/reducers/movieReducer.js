@@ -1,6 +1,7 @@
 const initState = {
   movies: [],
   movieOverview: [],
+  movieVideo:[]
 };
 
 const movieReducer = (state = initState, action) => {
@@ -25,6 +26,11 @@ const movieReducer = (state = initState, action) => {
       return {
         ...state,
         movieOverview: action.selectedItem,
+      };
+      case 'VIDEO_SELECTED_MOVIE':
+      return {
+        ...state,
+        movieVideo: action.selectedItem,
       };
   }
   return state;
