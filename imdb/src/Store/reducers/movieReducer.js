@@ -1,4 +1,6 @@
 const initState = {
+  loading:true,
+  error:'',
   movies: [],
   movieOverview: [],
   movieVideo:[]
@@ -6,7 +8,7 @@ const initState = {
 
 const movieReducer = (state = initState, action) => {
   switch (action.type) {
-    case "LOAD_SEARCHED_MOVIE":
+    case "FETCH_SEARCHED_MOVIE":
       return {
         ...state,
         movies: action.searchedItem,

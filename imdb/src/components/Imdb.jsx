@@ -2,12 +2,11 @@ import React, { Component } from "react";
 import "../css/imdb.scss";
 import Movies from "./Movies";
 import { connect } from "react-redux";
-import { loadMovieFromApi } from "../Store/actions/moviesAction";
+import { fetchMovieFromApi } from "../Store/actions/moviesAction";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSearch, faFileDownload } from "@fortawesome/free-solid-svg-icons";
 import { Input, Button, Card, Typography } from "@material-ui/core";
 import Badge from "@material-ui/core/Badge";
-import MailIcon from "@material-ui/icons/Mail";
 class Imdb extends Component {
   state = {
     search: "",
@@ -21,7 +20,7 @@ class Imdb extends Component {
   };
 
   handleClick = () => {
-    this.props.loadMovieFromApi(this.state.search);
+    this.props.fetchMovieFromApi(this.state.search);
   };
 
   pageContentLength = () => {
@@ -54,8 +53,12 @@ class Imdb extends Component {
     } else
       return (
         <Card>
-          <Typography color="textSecondary" variant="h5">
-           Search your favorite movie or serie
+          <Typography
+            color="textSecondary"
+            variant="h5"
+            style={{ textAlign: "center", marginTop: "20px" }}
+          >
+            Search your favorite movie or series
           </Typography>
         </Card>
       );
@@ -101,8 +104,8 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    loadMovieFromApi: (searchedItem) =>
-      dispatch(loadMovieFromApi(searchedItem)),
+    fetchMovieFromApi: (searchedItem) =>
+      dispatch(fetchMovieFromApi(searchedItem)),
   };
 };
 

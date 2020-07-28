@@ -15,9 +15,9 @@ function App() {
     <BrowserRouter>
       <Grid className="App">
         <Grid className="App-header container">
-          <Grid item xs={2} className="Home_icon" >
+          <Grid item xs={2}  >
             <Link to="/" >
-            <FontAwesomeIcon icon={faHome} size="2x" color="#286b92" />
+            <FontAwesomeIcon icon={faHome} size="2x" color="#286b92" className="Home_icon"/>
             </Link>
           </Grid>
           <Grid item xs={8} className=" App-logo-container">

@@ -12,18 +12,19 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faForward, faTrash } from "@fortawesome/free-solid-svg-icons";
 
 function Movies(props) {
+  
   const url =
     props.image !== undefined || null
       ? Object.values(props.image).filter((item) => item !== undefined)
       : "";
 
-  const handleClick = () => {
+  const handleDelete = () => {
     props.deleteMovie(props.id);
   };
 
-   const handlSelectMovie = () => {
+  const handlSelectMovie = () => {
     props.getOverview(props.id.slice(7));
-    props.getVideo(props.id.slice(7))
+    props.getVideo(props.id.slice(7));
   };
 
   if (typeof props.title === "undefined") return null;
@@ -55,7 +56,7 @@ function Movies(props) {
               <FontAwesomeIcon icon={faForward} size="2x" color="#ffffff" />
             </Button>
           </Link>
-          <a onClick={handleClick}>
+          <a onClick={handleDelete}>
             <Button color="secondary" variant="contained">
               <FontAwesomeIcon icon={faTrash} size="2x" color="#ffffff" />
             </Button>

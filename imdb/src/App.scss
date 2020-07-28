@@ -1,6 +1,6 @@
 .App {
-  text-align: center;
-  overflow: scroll;
+  // text-align: center;
+  // overflow: scroll;
 }
 .App-logo-container {
   display: flex;
@@ -10,7 +10,6 @@
   height: 20vmin;
   padding: 10px;
   align-self: flex-start;
-  
 }
 
 .App-header {
@@ -28,7 +27,7 @@
   color: #61dafb;
 }
 
-.Home_icon{
-  justify-self: start;
-  left: 200px;
+.Home_icon {
+  left: 50px;
+  position: relative;
 }

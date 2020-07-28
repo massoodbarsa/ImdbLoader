@@ -1,12 +1,23 @@
 @import "movies.scss";
 
+.movie_container{
+  margin: 0 10px ;
+  padding: 20px;
+}
+
 .movie_overview {
   margin-top: 40px;
-//   background-color: green;
+  display: flex;
+  flex-direction: row;
 }
 
 .movie_image_container {
-    // border-left: 1px dotted paleturquoise;
+  display: flex;
+  justify-content: space-between;
+}
+
+.movie-image {
+  width: 30%;
 }
 
 #movie-title {
@@ -14,22 +25,27 @@
   padding: 10px;
 }
 
-.movie-contents {
-  display: flex;
-  margin:0 20px
-}
-
 .movie-results {
   padding-bottom: 20px;
+
+  span {
+    display: flex;
+    flex-direction: column;
+  }
 }
 
 #summary {
   text-align: left;
 }
 
-#movie_trailer{
-    margin:30px;
-    width: 62%;
-    height: 500px;
-    overflow-y: hidden;
+#movie_trailer {
+  margin-bottom: 90px;
+  width: 80%;
+  height: 400px;
+  overflow-y: hidden;
+}
+
+.movie-info {
+  padding: 5px;
+  width: 100%;
 }
