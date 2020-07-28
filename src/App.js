@@ -7,7 +7,7 @@ import { Link } from "react-router-dom";
 import Grid from "@material-ui/core/Grid";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHome} from "@fortawesome/free-solid-svg-icons";
-
+import SearchBar from "./components/searchBar";
 import { BrowserRouter, Route } from "react-router-dom";
 
 function App() {
@@ -25,6 +25,9 @@ function App() {
               <img src={imdbImg} className="App-logo" alt="logo" />
             </Link>
           </Grid>
+        </Grid>
+        <Grid>
+          <SearchBar/>
         </Grid>
         <Route exact path="/" component={Imdb} />
         <Route path="/:movie_id" component={Movie} />

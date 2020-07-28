@@ -1,38 +1,14 @@
-import React, { Component } from "react";
+import React from "react";
 import "../css/imdb.scss";
 import Movies from "./Movies";
-import { connect } from "react-redux";
-import { fetchMovieFromApi } from "../Store/actions/moviesAction";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faSearch, faFileDownload } from "@fortawesome/free-solid-svg-icons";
-import { Input, Button, Card, Typography } from "@material-ui/core";
-import Badge from "@material-ui/core/Badge";
-class Imdb extends Component {
-  state = {
-    search: "",
-    pageMovieLength: "",
-  };
+import { useSelector } from "react-redux";
+import { Card, Typography } from "@material-ui/core";
 
-  handleChange = (e) => {
-    this.setState({
-      search: e.target.value,
-    });
-  };
+function Imdb(props) {
+  const movies = useSelector((state) => state.movie.movies);
 
-  handleClick = () => {
-    this.props.fetchMovieFromApi(this.state.search);
-  };
-
-  pageContentLength = () => {
-    const length = this.props.movies.filter((item) => item.title !== undefined);
-
-    return length.length;
-  };
-
-  loadPage = () => {
-    const { movies } = this.props;
-
-    if (movies.length !== 0 || movies === undefined) {
+  const loadPage = () => {
+    if (movies.length !== 0 || (movies === undefined && loading)) {
       return (
         <section className="">
           {movies.map((item) => (
@@ -64,49 +40,7 @@ class Imdb extends Component {
       );
   };
 
-  render() {
-    return (
-      <div className="">
-        <section className="search-area">
-          <label>Search</label>
-          <Input
-            type="text"
-            className="search-input"
-            onChange={this.handleChange}
-            color="primary"
-          />
-          <a
-            className="btn-floating btn-large waves-effect waves-light cyan lighten-2 "
-            onClick={this.handleClick}
-          >
-            <Button color="primary">
-              <FontAwesomeIcon icon={faSearch} size="2x" color="#286b92" />
-            </Button>
-          </a>
-          <Badge
-            color="secondary"
-            badgeContent={this.pageContentLength()}
-            onClick={this.pageContentLength}
-          >
-            <FontAwesomeIcon icon={faFileDownload} size="2x" color="#286b92" />
-          </Badge>
-        </section>
-
-        {this.loadPage()}
-      </div>
-    );
-  }
+  return <div className="">{loadPage()}</div>;
 }
 
-const mapStateToProps = (state) => {
-  return { movies: state.movie.movies };
-};
-
-const mapDispatchToProps = (dispatch) => {
-  return {
-    fetchMovieFromApi: (searchedItem) =>
-      dispatch(fetchMovieFromApi(searchedItem)),
-  };
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(Imdb);
+export default Imdb;
