@@ -1,24 +1,32 @@
-import React, { Component } from "react";
-import { connect } from "react-redux";
+import React from "react";
+import { useSelector } from "react-redux";
 import "../css/movie.scss";
 import { Grid, Typography } from "@material-ui/core";
 import Actor from "./Actor";
-import { getOverview } from "../Store/actions/moviesAction";
 
 function Movie(props) {
-  const resource = props.movieVideo.resource;
+  let id = props.match.params.movie_id;
+  const movies = useSelector((state) =>
+    state.movie.movies.find((i) => i.id == `/title/${id}/`)
+  );
+  const movieOverview = useSelector((state) => state.movie.movieOverview);
+  const movieVideo = useSelector((state) => state.movie.movieVideo);
+
+  const resource = movieVideo.resource;
   let trailerId = [];
   if (resource) {
-    const trailers = resource.videos&&resource.videos.filter((item) => {
-      if (
-        item.primaryTitle.id === resource.id &&
-        item.audioLanguage === "eng"
-      ) {
-        return (item.contentType = "Trailer");
-      }
-    });
+    const trailers =
+      resource.videos &&
+      resource.videos.filter((item) => {
+        if (
+          item.primaryTitle.id === resource.id &&
+          item.audioLanguage === "eng"
+        ) {
+          return (item.contentType = "Trailer");
+        }
+      });
 
-    trailerId = trailers&&trailers.map((item) => item.id.slice(9));
+    trailerId = trailers && trailers.map((item) => item.id.slice(9));
   }
 
   const {
@@ -29,9 +37,9 @@ function Movie(props) {
     seriesEndYear,
     runningTimeInMinutes,
     principals,
-  } = props.movies;
+  } = movies;
 
-  const { ratings, genres, releaseDate, plotSummary } = props.movieOverview;
+  const { ratings, genres, releaseDate, plotSummary } = movieOverview;
 
   const url =
     image !== undefined || null
@@ -161,14 +169,4 @@ function Movie(props) {
   );
 }
 
-const mapStateToProps = (state, myProps) => {
-  let id = myProps.match.params.movie_id;
-
-  return {
-    movies: state.movie.movies.find((i) => i.id == `/title/${id}/`),
-    movieOverview: state.movie.movieOverview,
-    movieVideo: state.movie.movieVideo,
-  };
-};
-
-export default connect(mapStateToProps)(Movie);
+export default Movie;
