@@ -23,7 +23,7 @@ export const fetchMovieFromApi = (searchedItem) => {
       method: "GET",
       headers: {
         "x-rapidapi-host": "imdb8.p.rapidapi.com",
-        "x-rapidapi-key": "c676ed0ecamsh8088e625996de6ep18f297jsn83839b2dedc3",
+        "x-rapidapi-key": "94d850c281mshad8db23a810d5e0p15724fjsn61b6dcd5739c",
         useQueryString: true,
       },
     })
@@ -55,9 +55,7 @@ export const getOverview = (id) => {
       {
         method: "GET",
         headers: {
-          "x-rapidapi-host": "imdb8.p.rapidapi.com",
-          "x-rapidapi-key":
-            "c676ed0ecamsh8088e625996de6ep18f297jsn83839b2dedc3",
+         	"x-rapidapi-host": "imdb8.p.rapidapi.com",
         },
       }
     )
@@ -75,9 +73,7 @@ export const getVideo = (id) => {
       {
         method: "GET",
         headers: {
-          "x-rapidapi-host": "imdb8.p.rapidapi.com",
-          "x-rapidapi-key":
-            "c676ed0ecamsh8088e625996de6ep18f297jsn83839b2dedc3",
+         	"x-rapidapi-key": "94d850c281mshad8db23a810d5e0p15724fjsn61b6dcd5739c",
         },
       }
     )

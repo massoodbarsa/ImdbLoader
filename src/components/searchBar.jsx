@@ -23,11 +23,14 @@ class searchBar extends Component {
   };
 
   pageContentLength = () => {
-    const valiedMovies = this.props.movies.filter(
-      (item) => item.title !== undefined
-    );
-
-    return valiedMovies.length;
+    if (this.props.loading===false&&this.props.movie) {
+        const valiedMovies = this.props.movies&&this.props.movies.filter(
+            (item) => item.title !== undefined
+          );
+      
+          return valiedMovies.length;
+    }
+  
   };
 
   render() {
@@ -62,7 +65,7 @@ class searchBar extends Component {
   }
 }
 const mapStateToProps = (state) => {
-  return { movies: state.movie.movies };
+  return { movies: state.movie.movies, loading: state.movie.loading };
 };
 const mapDispatchToProps = (dispatch) => {
   return {

@@ -30,13 +30,13 @@ const movieReducer = (state = initState, action) => {
     case FETCH_SEARCHED_MOVIE_SUCCESS:
       return {
         ...state,
-        loading: true,
+        loading: false,
       };
 
     case FETCH_SEARCHED_MOVIE_FAILURE:
       return {
         ...state,
-        loading: false,
+        loading: true,
         error:action.payload
       }
 
