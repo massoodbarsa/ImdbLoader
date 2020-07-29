@@ -23,14 +23,13 @@ class searchBar extends Component {
   };
 
   pageContentLength = () => {
-    if (this.props.loading===false&&this.props.movie) {
-        const valiedMovies = this.props.movies&&this.props.movies.filter(
-            (item) => item.title !== undefined
-          );
-      
-          return valiedMovies.length;
+    if (this.props.loading === false && this.props.movie) {
+      const valiedMovies =
+        this.props.movies &&
+        this.props.movies.filter((item) => item.title !== undefined);
+
+      return valiedMovies.length;
     }
-  
   };
 
   render() {
