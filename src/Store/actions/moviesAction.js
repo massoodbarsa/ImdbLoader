@@ -55,7 +55,8 @@ export const getOverview = (id) => {
       {
         method: "GET",
         headers: {
-         	"x-rapidapi-host": "imdb8.p.rapidapi.com",
+           "x-rapidapi-host": "imdb8.p.rapidapi.com",
+           "x-rapidapi-key": "94d850c281mshad8db23a810d5e0p15724fjsn61b6dcd5739c",
         },
       }
     )
@@ -73,8 +74,8 @@ export const getVideo = (id) => {
       {
         method: "GET",
         headers: {
-         	"x-rapidapi-key": "94d850c281mshad8db23a810d5e0p15724fjsn61b6dcd5739c",
-        },
+          "x-rapidapi-host": "imdb8.p.rapidapi.com",
+          "x-rapidapi-key": "94d850c281mshad8db23a810d5e0p15724fjsn61b6dcd5739c",        },
       }
     )
       .then((response) => response.json())
