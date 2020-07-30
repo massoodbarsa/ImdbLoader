@@ -2,15 +2,18 @@ import React from "react";
 import { useSelector } from "react-redux";
 import "../css/movie.scss";
 import { Grid, Typography } from "@material-ui/core";
-import Actor from "./Actor";
+import Actors from "./Actors";
 
 function Movie(props) {
+
   let id = props.match.params.movie_id;
+  console.log(props);
   const movies = useSelector((state) =>
     state.movie.movies.find((i) => i.id == `/title/${id}/`)
   );
   const movieOverview = useSelector((state) => state.movie.movieOverview);
   const movieVideo = useSelector((state) => state.movie.movieVideo);
+
 
   const resource = movieVideo.resource;
   let trailerId = [];
@@ -153,7 +156,7 @@ function Movie(props) {
       </Grid>
 
       <Grid className="" item xs={6}>
-        <Actor actors={principals} />
+        <Actors actors={principals} />
       </Grid>
       <Grid item xs={6}>
         <iframe

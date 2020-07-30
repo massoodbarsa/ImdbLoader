@@ -8,12 +8,31 @@ import {
   VIDEO_SELECTED_MOVIE,
   VIDEO_SELECTED_SUCCESS,
   VIDEO_SELECTED_FAILURE,
+  FETCH_SELECTED_ACTOR,
 } from "./actionTypes";
 
 export const deleteMovie = (id) => {
   return {
     type: "DELETE_MOVIE",
     id,
+  };
+};
+export const fetchActor = (actor) => {
+  return (dispatch) => {
+    fetch(`https://imdb8.p.rapidapi.com/actors/get-bio?nconst=${actor}`, {
+      method: "GET",
+      headers: {
+        "x-rapidapi-host": "imdb8.p.rapidapi.com",
+        "x-rapidapi-key": "94d850c281mshad8db23a810d5e0p15724fjsn61b6dcd5739c",
+      },
+    })
+      .then((response) => response.json())
+      .then((data) =>
+        dispatch({ type: FETCH_SELECTED_ACTOR, payload: data })
+      )
+      .catch((err) => {
+        err;
+      });
   };
 };
 
@@ -30,8 +49,11 @@ export const fetchMovieFromApi = (searchedItem) => {
       .then((response) => response.json())
       .then((data) =>
         dispatch({ type: FETCH_SEARCHED_MOVIE, searchedItem: data.results })
-      ).then(dispatch(fetchMovieSuccess()))
-      .catch(() => {dispatch(fetchMovieFailure())});
+      )
+      .then(dispatch(fetchMovieSuccess()))
+      .catch(() => {
+        dispatch(fetchMovieFailure());
+      });
   };
 };
 
@@ -55,8 +77,9 @@ export const getOverview = (id) => {
       {
         method: "GET",
         headers: {
-           "x-rapidapi-host": "imdb8.p.rapidapi.com",
-           "x-rapidapi-key": "94d850c281mshad8db23a810d5e0p15724fjsn61b6dcd5739c",
+          "x-rapidapi-host": "imdb8.p.rapidapi.com",
+          "x-rapidapi-key":
+            "94d850c281mshad8db23a810d5e0p15724fjsn61b6dcd5739c",
         },
       }
     )
@@ -75,7 +98,9 @@ export const getVideo = (id) => {
         method: "GET",
         headers: {
           "x-rapidapi-host": "imdb8.p.rapidapi.com",
-          "x-rapidapi-key": "94d850c281mshad8db23a810d5e0p15724fjsn61b6dcd5739c",        },
+          "x-rapidapi-key":
+            "94d850c281mshad8db23a810d5e0p15724fjsn61b6dcd5739c",
+        },
       }
     )
       .then((response) => response.json())

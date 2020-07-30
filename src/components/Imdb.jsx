@@ -5,7 +5,7 @@ import { useSelector } from "react-redux";
 import { Card, Typography } from "@material-ui/core";
 
 function Imdb(props) {
-  useEffect(() => {});
+  // useEffect(() => {});
   const movies = useSelector((state) => state.movie.movies);
   const loading = useSelector((state) => state.movie.loading);
 

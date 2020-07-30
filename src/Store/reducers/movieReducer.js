@@ -8,6 +8,7 @@ import {
   VIDEO_SELECTED_MOVIE,
   VIDEO_SELECTED_SUCCESS,
   VIDEO_SELECTED_FAILURE,
+  FETCH_SELECTED_ACTOR
 } from "../actions/actionTypes";
 
 const initState = {
@@ -16,6 +17,7 @@ const initState = {
   movies: [],
   movieOverview: [],
   movieVideo: [],
+  actor:{}
 };
 
 const movieReducer = (state = initState, action) => {
@@ -50,16 +52,21 @@ const movieReducer = (state = initState, action) => {
           movies: newMovies,
         };
       }
-    case "OVERVIEW_SELECTED_MOVIE":
+    case OVERVIEW_SELECTED_MOVIE:
       return {
         ...state,
         movieOverview: action.selectedItem,
       };
-    case "VIDEO_SELECTED_MOVIE":
+    case VIDEO_SELECTED_MOVIE:
       return {
         ...state,
         movieVideo: action.selectedItem,
       };
+      case FETCH_SELECTED_ACTOR:
+        return {
+          ...state,
+          actor: action.payload,
+        };
   }
   return state;
 };

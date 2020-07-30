@@ -5,6 +5,8 @@ import { Input, Button } from "@material-ui/core";
 import Badge from "@material-ui/core/Badge";
 import { connect } from "react-redux";
 import { fetchMovieFromApi } from "../Store/actions/moviesAction";
+import { Link } from "react-router-dom";
+
 
 class searchBar extends Component {
   state = {
@@ -23,13 +25,11 @@ class searchBar extends Component {
   };
 
   pageContentLength = () => {
-    if (this.props.loading === false && this.props.movie) {
-      const valiedMovies =
-        this.props.movies &&
-        this.props.movies.filter((item) => item.title !== undefined);
+    const valiedMovies = this.props.movies
+      ? this.props.movies.filter((item) => item.title !== undefined)
+      : [];
 
-      return valiedMovies.length;
-    }
+    return valiedMovies.length;
   };
 
   render() {
@@ -51,13 +51,15 @@ class searchBar extends Component {
               <FontAwesomeIcon icon={faSearch} size="2x" color="#286b92" />
             </Button>
           </a>
-          <Badge
-            color="secondary"
-            badgeContent={this.pageContentLength()}
-            onClick={this.pageContentLength}
-          >
-            <FontAwesomeIcon icon={faFileDownload} size="2x" color="#286b92" />
-          </Badge>
+          <Link to="/">
+            <Badge color="secondary" badgeContent={this.pageContentLength()}>
+              <FontAwesomeIcon
+                icon={faFileDownload}
+                size="2x"
+                color="#286b92"
+              />
+            </Badge>
+          </Link>
         </section>
       </div>
     );

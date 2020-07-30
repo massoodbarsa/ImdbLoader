@@ -3,10 +3,12 @@ import imdbImg from "./imdb.png";
 import "./App.scss";
 import Imdb from "./components/Imdb";
 import Movie from "./components/Movie";
+import Actor from "./components/Actor";
+
 import { Link } from "react-router-dom";
 import Grid from "@material-ui/core/Grid";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faHome} from "@fortawesome/free-solid-svg-icons";
+import { faHome } from "@fortawesome/free-solid-svg-icons";
 import SearchBar from "./components/searchBar";
 import { BrowserRouter, Route } from "react-router-dom";
 
@@ -15,23 +17,30 @@ function App() {
     <BrowserRouter>
       <Grid className="App">
         <Grid className="App-header container">
-          <Grid item xs={2}  >
-            <Link to="/" >
-            <FontAwesomeIcon icon={faHome} size="2x" color="#286b92" className="Home_icon"/>
+          <Grid item xs={2}>
+            <Link to="/">
+              <FontAwesomeIcon
+                icon={faHome}
+                size="2x"
+                color="#286b92"
+                className="Home_icon"
+              />
             </Link>
           </Grid>
           <Grid item xs={8} className=" App-logo-container">
-            <Link to="/" >
+            <Link to="/">
               <img src={imdbImg} className="App-logo" alt="logo" />
             </Link>
           </Grid>
         </Grid>
         <Grid>
-          <SearchBar/>
+          <SearchBar />
         </Grid>
-        <Route exact path="/" component={Imdb} />
-        <Route path="/:movie_id" component={Movie} />
       </Grid>
+
+      <Route exact path="/" component={Imdb} />
+      <Route path="/:movie_id" component={Movie} />
+      <Route path="actor/:actor_id" component={Actor} />
     </BrowserRouter>
   );
 }

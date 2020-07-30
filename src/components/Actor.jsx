@@ -1,27 +1,22 @@
-import React, { Component } from "react";
-import { Grid, Card, CardContent, Typography } from "@material-ui/core";
-import "../css/actor.scss";
+import React from "react";
+import { useSelector } from "react-redux";
 
-class Actor extends Component {
-  render() {
-    const actor = this.props.actors.map((item) => {
-      return (
-        <div key={item.id}  className="actors">
-          <Typography color="textSecondary">Actor</Typography>
-          <Typography component="p">{item.name}</Typography>
-          <Typography color="textSecondary">Character</Typography>
-          <Typography component="p">{item.characters[0]}</Typography>
-        </div>
-      );
-    });
+function Actor(props) {
+  const actor = useSelector((state) => state.movie.actor);
+ 
 
-    return (
-      <div className="actor-container">
-        <h2 >Actors</h2>
-        {actor}
-      </div>
-    );
-  }
+  console.log(props);
+  return (
+    <div>
+      <ul>
+      <li>{actor.id}</li>
+        <li>{actor.birthDate}</li>
+        <li>{actor.birthPlace}</li>
+        <li>{actor.id}</li>
+        <li>{actor.gender}</li>
+        <li>{actor.birthPlace}</li>
+      </ul>
+    </div>
+  );
 }
-
 export default Actor;

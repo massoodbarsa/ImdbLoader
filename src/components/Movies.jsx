@@ -11,6 +11,7 @@ import { Grid, LinearProgress, Button } from "@material-ui/core";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faForward, faTrash } from "@fortawesome/free-solid-svg-icons";
 
+
 function Movies(props) {
   const dispatch = useDispatch();
 
@@ -63,7 +64,7 @@ function Movies(props) {
             </Button>
           </a>
         </Grid>
-        <Grid className="movie-image-container " item xs={4}>
+        <Grid className="movie-image-container " item xs={3}>
           <img src={url[2]} alt="" className="movie-image" />
         </Grid>
       </li>
