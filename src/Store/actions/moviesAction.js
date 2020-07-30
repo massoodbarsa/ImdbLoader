@@ -11,6 +11,10 @@ import {
   FETCH_SELECTED_ACTOR,
 } from "./actionTypes";
 
+const apiKey = {
+  "x-rapidapi-host": "imdb8.p.rapidapi.com",
+  "x-rapidapi-key": "d29c8c851cmshaea3f4b96a2bec5p1b4816jsn31299df3589a",
+};
 export const deleteMovie = (id) => {
   return {
     type: "DELETE_MOVIE",
@@ -21,15 +25,10 @@ export const fetchActor = (actor) => {
   return (dispatch) => {
     fetch(`https://imdb8.p.rapidapi.com/actors/get-bio?nconst=${actor}`, {
       method: "GET",
-      headers: {
-        "x-rapidapi-host": "imdb8.p.rapidapi.com",
-        "x-rapidapi-key": "94d850c281mshad8db23a810d5e0p15724fjsn61b6dcd5739c",
-      },
+      headers: apiKey,
     })
       .then((response) => response.json())
-      .then((data) =>
-        dispatch({ type: FETCH_SELECTED_ACTOR, payload: data })
-      )
+      .then((data) => dispatch({ type: FETCH_SELECTED_ACTOR, payload: data }))
       .catch((err) => {
         err;
       });
@@ -40,11 +39,7 @@ export const fetchMovieFromApi = (searchedItem) => {
   return (dispatch) => {
     fetch(`https://imdb8.p.rapidapi.com/title/find?q=${searchedItem}`, {
       method: "GET",
-      headers: {
-        "x-rapidapi-host": "imdb8.p.rapidapi.com",
-        "x-rapidapi-key": "94d850c281mshad8db23a810d5e0p15724fjsn61b6dcd5739c",
-        useQueryString: true,
-      },
+      headers: apiKey,
     })
       .then((response) => response.json())
       .then((data) =>
@@ -76,11 +71,7 @@ export const getOverview = (id) => {
       `https://imdb8.p.rapidapi.com/title/get-overview-details?currentCountry=US&tconst=${id}`,
       {
         method: "GET",
-        headers: {
-          "x-rapidapi-host": "imdb8.p.rapidapi.com",
-          "x-rapidapi-key":
-            "94d850c281mshad8db23a810d5e0p15724fjsn61b6dcd5739c",
-        },
+        headers: apiKey,
       }
     )
       .then((response) => response.json())
@@ -96,11 +87,7 @@ export const getVideo = (id) => {
       `https://imdb8.p.rapidapi.com/title/get-videos?limit=25&region=US&tconst=${id}`,
       {
         method: "GET",
-        headers: {
-          "x-rapidapi-host": "imdb8.p.rapidapi.com",
-          "x-rapidapi-key":
-            "94d850c281mshad8db23a810d5e0p15724fjsn61b6dcd5739c",
-        },
+        headers: apiKey,
       }
     )
       .then((response) => response.json())
