@@ -9,6 +9,7 @@ import {
   VIDEO_SELECTED_SUCCESS,
   VIDEO_SELECTED_FAILURE,
   FETCH_SELECTED_ACTOR,
+  FETCH_ACTOR_SUCCESS,
 } from "./actionTypes";
 
 const apiKey = {
@@ -29,9 +30,14 @@ export const fetchActor = (actor) => {
     })
       .then((response) => response.json())
       .then((data) => dispatch({ type: FETCH_SELECTED_ACTOR, payload: data }))
-      .catch((err) => {
-        err;
-      });
+      .then(dispatch(fetchActorSuccess()))
+      .catch((err) => {});
+  };
+};
+
+const fetchActorSuccess = () => {
+  return {
+    type: FETCH_ACTOR_SUCCESS,
   };
 };
 

@@ -1,21 +1,27 @@
 import React from "react";
-import { useSelector } from "react-redux";
+import { Typography } from "@material-ui/core";
+import { Link } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { fetchActor } from "../Store/actions/moviesAction";
+import "../css/actor.scss";
 
 function Actor(props) {
-  const actor = useSelector((state) => state.movie.actor);
- 
+  const dispatch = useDispatch();
+
+  const handlSelectActor = () => {
+    dispatch(fetchActor(props.id.slice(6)));
+  };
 
   console.log(props);
   return (
     <div>
-      <ul>
-      <li>{actor.id}</li>
-        <li>{actor.birthDate}</li>
-        <li>{actor.birthPlace}</li>
-        <li>{actor.id}</li>
-        <li>{actor.gender}</li>
-        <li>{actor.birthPlace}</li>
-      </ul>
+      <Typography color="textSecondary">Actor</Typography>
+      <a className="actor_link" onClick={handlSelectActor}>
+        <Typography component="p">{props.name}</Typography>
+      </a>
+
+      <Typography color="textSecondary">Character</Typography>
+      <Typography component="p">{props.characters}</Typography>
     </div>
   );
 }

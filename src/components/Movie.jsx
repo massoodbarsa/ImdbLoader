@@ -5,7 +5,6 @@ import { Grid, Typography } from "@material-ui/core";
 import Actors from "./Actors";
 
 function Movie(props) {
-
   let id = props.match.params.movie_id;
   console.log(props);
   const movies = useSelector((state) =>
@@ -13,7 +12,6 @@ function Movie(props) {
   );
   const movieOverview = useSelector((state) => state.movie.movieOverview);
   const movieVideo = useSelector((state) => state.movie.movieVideo);
-
 
   const resource = movieVideo.resource;
   let trailerId = [];
@@ -160,11 +158,7 @@ function Movie(props) {
       </Grid>
       <Grid item xs={6}>
         <iframe
-          src={
-            "https://www.imdb.com/video/imdb/" +
-            trailerId[0] +
-            "/imdb/embed?autoplay=false&width=1000"
-          }
+          src={` https://www.imdb.com/video/imdb/${trailerId ? trailerId[0] : null}/imdb/embed?autoplay=false&width=1000`}
           id="movie_trailer"
         ></iframe>
       </Grid>

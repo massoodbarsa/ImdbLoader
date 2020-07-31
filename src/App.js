@@ -3,7 +3,7 @@ import imdbImg from "./imdb.png";
 import "./App.scss";
 import Imdb from "./components/Imdb";
 import Movie from "./components/Movie";
-import Actor from "./components/Actor";
+import ActorInfo from "./components/ActorInfo";
 
 import { Link } from "react-router-dom";
 import Grid from "@material-ui/core/Grid";
@@ -40,7 +40,7 @@ function App() {
 
       <Route exact path="/" component={Imdb} />
       <Route path="/:movie_id" component={Movie} />
-      <Route path="actor/:actor_id" component={Actor} />
+      {/* <Route path="actor_info/:actor_id" component={ActorInfo} /> */}
     </BrowserRouter>
   );
 }

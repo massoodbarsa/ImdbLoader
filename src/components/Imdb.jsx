@@ -5,12 +5,12 @@ import { useSelector } from "react-redux";
 import { Card, Typography } from "@material-ui/core";
 
 function Imdb(props) {
-  // useEffect(() => {});
+
   const movies = useSelector((state) => state.movie.movies);
-  const loading = useSelector((state) => state.movie.loading);
+  const movieLoading = useSelector((state) => state.movie.movieLoading);
 
   const loadPage = () => {
-    if (movies !== undefined && loading === false) {
+    if (movies !== undefined && movieLoading === false) {
       return (
         <section className="">
           {movies.map((item) => (

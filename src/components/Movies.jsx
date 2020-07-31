@@ -11,7 +11,6 @@ import { Grid, LinearProgress, Button } from "@material-ui/core";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faForward, faTrash } from "@fortawesome/free-solid-svg-icons";
 
-
 function Movies(props) {
   const dispatch = useDispatch();
 

@@ -8,16 +8,19 @@ import {
   VIDEO_SELECTED_MOVIE,
   VIDEO_SELECTED_SUCCESS,
   VIDEO_SELECTED_FAILURE,
-  FETCH_SELECTED_ACTOR
+  FETCH_SELECTED_ACTOR,
+  FETCH_ACTOR_SUCCESS,
 } from "../actions/actionTypes";
 
 const initState = {
-  loading: true,
+  movieLoading: true,
   error: "",
   movies: [],
   movieOverview: [],
   movieVideo: [],
-  actor:{}
+  actor: {},
+  ActorLoading: true,
+
 };
 
 const movieReducer = (state = initState, action) => {
@@ -32,15 +35,15 @@ const movieReducer = (state = initState, action) => {
     case FETCH_SEARCHED_MOVIE_SUCCESS:
       return {
         ...state,
-        loading: false,
+        movieLoading: false,
       };
 
     case FETCH_SEARCHED_MOVIE_FAILURE:
       return {
         ...state,
-        loading: true,
-        error:action.payload
-      }
+        movieLoading: true,
+        error: action.payload,
+      };
 
     case "DELETE_MOVIE":
       if (action.type === "DELETE_MOVIE") {
@@ -62,11 +65,16 @@ const movieReducer = (state = initState, action) => {
         ...state,
         movieVideo: action.selectedItem,
       };
-      case FETCH_SELECTED_ACTOR:
-        return {
-          ...state,
-          actor: action.payload,
-        };
+    case FETCH_SELECTED_ACTOR:
+      return {
+        ...state,
+        actor: action.payload,
+      };
+    case FETCH_ACTOR_SUCCESS:
+      return {
+        ...state,
+        ActorLoading: false,
+      };
   }
   return state;
 };
