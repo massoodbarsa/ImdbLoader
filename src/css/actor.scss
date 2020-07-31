@@ -32,5 +32,13 @@
     margin-left: 3px;
     padding-left: 10px;
     color: #fff;
+
+    &:active {
+      background-color: rgb(223, 9, 27);
+      border-radius: 20px;
+      margin-left: 3px;
+      padding-left: 10px;
+      color: #fff;
+    }
   }
 }
