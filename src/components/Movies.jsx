@@ -7,7 +7,7 @@ import {
   getOverview,
   getVideo,
 } from "../Store/actions/moviesAction";
-import { Grid, LinearProgress, Button } from "@material-ui/core";
+import { Grid, Button } from "@material-ui/core";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faForward, faTrash } from "@fortawesome/free-solid-svg-icons";
 

@@ -14,7 +14,7 @@ import {
 
 const apiKey = {
   "x-rapidapi-host": "imdb8.p.rapidapi.com",
-  "x-rapidapi-key": "d29c8c851cmshaea3f4b96a2bec5p1b4816jsn31299df3589a",
+  "x-rapidapi-key": "1ae19b9432mshe8b9662cdd17461p173560jsn0a2399503d35",
 };
 export const deleteMovie = (id) => {
   return {
@@ -51,10 +51,7 @@ export const fetchMovieFromApi = (searchedItem) => {
       .then((data) =>
         dispatch({ type: FETCH_SEARCHED_MOVIE, searchedItem: data.results })
       )
-      .then(dispatch(fetchMovieSuccess()))
-      .catch(() => {
-        dispatch(fetchMovieFailure());
-      });
+      .catch((err) => {});
   };
 };
 
@@ -84,7 +81,11 @@ export const getOverview = (id) => {
       .then((data) =>
         dispatch({ type: OVERVIEW_SELECTED_MOVIE, selectedItem: data })
       )
-      .catch((err) => {});
+      .then(dispatch(fetchMovieSuccess()))
+
+      .catch(() => {
+        dispatch(fetchMovieFailure());
+      });
   };
 };
 export const getVideo = (id) => {

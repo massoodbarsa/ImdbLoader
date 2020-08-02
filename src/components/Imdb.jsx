@@ -1,16 +1,14 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import "../css/imdb.scss";
 import Movies from "./Movies";
 import { useSelector } from "react-redux";
 import { Card, Typography } from "@material-ui/core";
 
 function Imdb(props) {
-
   const movies = useSelector((state) => state.movie.movies);
-  const movieLoading = useSelector((state) => state.movie.movieLoading);
 
   const loadPage = () => {
-    if (movies !== undefined && movieLoading === false) {
+    if (movies !== undefined) {
       return (
         <section className="">
           {movies.map((item) => (

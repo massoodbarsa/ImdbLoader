@@ -1,16 +1,20 @@
-import React,{useEffect} from "react";
+import React, { useEffect } from "react";
 import { useSelector } from "react-redux";
 import "../css/movie.scss";
 import { Grid, Typography } from "@material-ui/core";
 import Actors from "./Actors";
+import CircularProgress from "@material-ui/core/CircularProgress";
 
 function Movie(props) {
+  // const [loading, setLoading] = useState({
+  //   loading: true,
+  // });
 
-  useEffect(()=>{
-    console.log('====================================');
-    console.log('effect');
-    console.log('====================================');
-  })
+  // useEffect(() => {
+  //   setLoading({
+  //     loading: movieLoading,
+  //   });
+  // }, []);
 
   let id = props.match.params.movie_id;
   const movies = useSelector((state) =>
