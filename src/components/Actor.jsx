@@ -12,11 +12,10 @@ function Actor(props) {
     dispatch(fetchActor(props.id.slice(6)));
   };
 
-  console.log(props);
   return (
     <div>
       <Typography color="textSecondary">Actor</Typography>
-      <a className="actor_link" onClick={handlSelectActor}>
+      <a className="actor_link" onMouseOver={handlSelectActor}>
         <Typography component="p">{props.name}</Typography>
       </a>
 

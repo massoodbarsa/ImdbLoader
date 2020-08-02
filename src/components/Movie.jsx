@@ -1,12 +1,18 @@
-import React from "react";
+import React,{useEffect} from "react";
 import { useSelector } from "react-redux";
 import "../css/movie.scss";
 import { Grid, Typography } from "@material-ui/core";
 import Actors from "./Actors";
 
 function Movie(props) {
+
+  useEffect(()=>{
+    console.log('====================================');
+    console.log('effect');
+    console.log('====================================');
+  })
+
   let id = props.match.params.movie_id;
-  console.log(props);
   const movies = useSelector((state) =>
     state.movie.movies.find((i) => i.id == `/title/${id}/`)
   );
@@ -158,7 +164,9 @@ function Movie(props) {
       </Grid>
       <Grid item xs={6}>
         <iframe
-          src={` https://www.imdb.com/video/imdb/${trailerId ? trailerId[0] : null}/imdb/embed?autoplay=false&width=1000`}
+          src={` https://www.imdb.com/video/imdb/${
+            trailerId ? trailerId[0] : null
+          }/imdb/embed?autoplay=false&width=1000`}
           id="movie_trailer"
         ></iframe>
       </Grid>
