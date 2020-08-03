@@ -10,6 +10,7 @@ import {
   VIDEO_SELECTED_FAILURE,
   FETCH_SELECTED_ACTOR,
   FETCH_ACTOR_SUCCESS,
+  FETCH_MOVIE_CAST,
 } from "../actions/actionTypes";
 
 const initState = {
@@ -19,8 +20,8 @@ const initState = {
   movieOverview: [],
   movieVideo: [],
   actor: {},
+  movieCast:[],
   ActorLoading: true,
-
 };
 
 const movieReducer = (state = initState, action) => {
@@ -74,6 +75,12 @@ const movieReducer = (state = initState, action) => {
       return {
         ...state,
         ActorLoading: false,
+      };
+
+    case FETCH_MOVIE_CAST:
+      return {
+        ...state,
+        movieCast: action.payload,
       };
   }
   return state;

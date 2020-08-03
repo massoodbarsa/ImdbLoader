@@ -10,11 +10,11 @@ import Grid from "@material-ui/core/Grid";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHome } from "@fortawesome/free-solid-svg-icons";
 import SearchBar from "./components/searchBar";
-import { BrowserRouter, Route } from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 function App() {
   return (
-    <BrowserRouter>
+    <Router>
       <Grid className="App">
         <Grid className="App-header container">
           <Grid item xs={2}>
@@ -37,11 +37,13 @@ function App() {
           <SearchBar />
         </Grid>
       </Grid>
+      <Switch>
+        <Route exact path="/" component={Imdb} />
+        <Route path="/:movie_id" component={Movie} />
+      </Switch>
 
-      <Route exact path="/" component={Imdb} />
-      <Route path="/:movie_id" component={Movie} />
       {/* <Route path="actor_info/:actor_id" component={ActorInfo} /> */}
-    </BrowserRouter>
+    </Router>
   );
 }
 

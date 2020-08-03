@@ -19,8 +19,9 @@ function Movies(props) {
   };
 
   const handlSelectMovie = () => {
-    dispatch(getOverview(props.id.slice(7)));
-    dispatch(getVideo(props.id.slice(7)));
+    // dispatch(getOverview(props.id.slice(7)));
+    // dispatch(getVideo(props.id.slice(7)));
+    console.log(clicked);
   };
 
   const url =
@@ -52,7 +53,7 @@ function Movies(props) {
           </div>
         </Grid>
         <Grid className="movie_button_area" item xs={2}>
-          <Link to={"/" + props.id.slice(7)} onClick={handlSelectMovie}>
+          <Link to={"/" + props.id.slice(7)} >
             <Button color="primary" variant="contained">
               <FontAwesomeIcon icon={faForward} size="2x" color="#ffffff" />
             </Button>

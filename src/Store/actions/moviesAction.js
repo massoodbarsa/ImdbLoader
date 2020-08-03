@@ -10,6 +10,7 @@ import {
   VIDEO_SELECTED_FAILURE,
   FETCH_SELECTED_ACTOR,
   FETCH_ACTOR_SUCCESS,
+  FETCH_MOVIE_CAST,
 } from "./actionTypes";
 
 const apiKey = {
@@ -101,6 +102,18 @@ export const getVideo = (id) => {
       .then((data) =>
         dispatch({ type: VIDEO_SELECTED_MOVIE, selectedItem: data })
       )
+      .catch((err) => {});
+  };
+};
+
+export const getMovieCast = (id) => {
+  return (dispatch) => {
+    fetch(`https://imdb8.p.rapidapi.com/title/get-top-cast?tconst=${id}`, {
+      method: "GET",
+      headers: apiKey,
+    })
+      .then((response) => response.json())
+      .then((data) => dispatch({ type: FETCH_MOVIE_CAST, payload: data }))
       .catch((err) => {});
   };
 };

@@ -8,11 +8,11 @@ import { useSelector } from "react-redux";
 function Actors(props) {
   const actor = props.actors.map((item) => {
     return (
-      <div key={item.id} className="actors">
+      <div key={item} className="actors">
         <Actor
-          name={item.name}
-          characters={item.characters ? item.characters[0] : "..."}
-          id={item.id}
+          // name={item.name}
+          // characters={item.characters ? item.characters[0] : "..."}
+          id={item}
         />
       </div>
     );

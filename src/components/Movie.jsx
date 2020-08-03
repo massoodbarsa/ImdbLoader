@@ -1,29 +1,53 @@
 import React, { useEffect } from "react";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import "../css/movie.scss";
 import { Grid, Typography } from "@material-ui/core";
 import Actors from "./Actors";
 import CircularProgress from "@material-ui/core/CircularProgress";
+import {
+  getOverview,
+  getVideo,
+  getMovieCast,
+} from "../Store/actions/moviesAction";
 
 function Movie(props) {
+  let id = props.match.params.movie_id;
+
+  // const movies = useSelector((state) =>
+  //   state.movie.movies.find((i) => i.id == `/title/${id}/`)
+  // );
+
+  const dispatch = useDispatch();
+
   // const [loading, setLoading] = useState({
   //   loading: true,
   // });
 
-  // useEffect(() => {
-  //   setLoading({
-  //     loading: movieLoading,
-  //   });
-  // }, []);
+  // const movieName = title ? title.title : "";
 
-  let id = props.match.params.movie_id;
-  const movies = useSelector((state) =>
-    state.movie.movies.find((i) => i.id == `/title/${id}/`)
-  );
+  useEffect(() => {
+    dispatch(getOverview(id));
+    dispatch(getVideo(id));
+    dispatch(getMovieCast(id));
+  }, []);
+
   const movieOverview = useSelector((state) => state.movie.movieOverview);
   const movieVideo = useSelector((state) => state.movie.movieVideo);
+  const movieCast = useSelector((state) => state.movie.movieCast).slice(0,3);
+
+console.log(movieCast);
+
+  const {
+    runningTimeInMinutes,
+    title,
+    ratings,
+    genres,
+    releaseDate,
+    plotSummary,
+  } = movieOverview;
 
   const resource = movieVideo.resource;
+
   let trailerId = [];
   if (resource) {
     const trailers =
@@ -40,32 +64,15 @@ function Movie(props) {
     trailerId = trailers && trailers.map((item) => item.id.slice(9));
   }
 
-  const {
-    title,
-    image,
-    titleType,
-    seriesStartYear,
-    seriesEndYear,
-    runningTimeInMinutes,
-    principals,
-  } = movies;
-
-  const { ratings, genres, releaseDate, plotSummary } = movieOverview;
-
-  const url =
-    image !== undefined || null
-      ? Object.values(image).filter((item) => item !== undefined)
-      : "";
-
-  const rating =
-    ratings !== undefined || null
-      ? Object.values(ratings).filter((item) => item !== undefined)
-      : "";
-
-  const summary =
-    plotSummary !== undefined || null
-      ? Object.values(plotSummary).filter((item) => item !== undefined)
-      : "";
+  // const {
+  // title,
+  // image,
+  // titleType,
+  // seriesStartYear,
+  // seriesEndYear,
+  // runningTimeInMinutes,
+  //   principals,
+  // } = movies;
 
   const gener =
     genres &&
@@ -77,9 +84,13 @@ function Movie(props) {
     <Grid container className="movie_container">
       <Grid className="movie_image_container" item xs={12}>
         <Typography variant="h3" id="movie-title">
-          {title}
+          {title ? title.title : ""}
         </Typography>
-        <img src={url[2]} alt="" className="movie-image" />
+        <img
+          src={title ? title.image.url : null}
+          alt=""
+          className="movie-image"
+        />
       </Grid>
       <Grid item xs={12}>
         <h2>Overview</h2>
@@ -90,7 +101,7 @@ function Movie(props) {
           MovieType
         </Typography>
         <Typography variant="body2" component="p" className="movie-results">
-          {titleType}
+          {title ? title.titleType : "..."}
           <br />
         </Typography>
 
@@ -98,7 +109,7 @@ function Movie(props) {
           Start year
         </Typography>
         <Typography variant="body2" component="p" className="movie-results">
-          {seriesStartYear || "..."}
+          {/* {seriesStartYear || "..."} */}
           <br />
         </Typography>
 
@@ -106,7 +117,7 @@ function Movie(props) {
           End year
         </Typography>
         <Typography variant="body2" component="p" className="movie-results">
-          {seriesEndYear || "..."}
+          {/* {seriesEndYear || "..."} */}
           <br />
         </Typography>
 
@@ -128,7 +139,7 @@ function Movie(props) {
           className="movie-results"
           style={{ color: "red", fontWeight: "bold" }}
         >
-          {rating[1] || "..."}
+          {ratings ? ratings.rating : "..."}
           <br />
         </Typography>
 
@@ -158,13 +169,12 @@ function Movie(props) {
           className="movie-results"
           id="summary"
         >
-          {summary[2] || "..."}
+          {plotSummary ? plotSummary.text : <CircularProgress />}
           <br />
         </Typography>
       </Grid>
-
       <Grid className="" item xs={6}>
-        <Actors actors={principals} />
+        <Actors actors={movieCast} />
       </Grid>
       <Grid item xs={6}>
         <iframe
