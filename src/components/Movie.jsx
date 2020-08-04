@@ -8,7 +8,10 @@ import {
   getOverview,
   getVideo,
   getMovieCast,
+  fetchActor
 } from "../Store/actions/moviesAction";
+// import { fetchActor } from "../Store/actions/moviesAction";
+
 
 function Movie(props) {
   let id = props.match.params.movie_id;
@@ -25,17 +28,19 @@ function Movie(props) {
 
   // const movieName = title ? title.title : "";
 
+  
+
+  const movieOverview = useSelector((state) => state.movie.movieOverview);
+  const movieVideo = useSelector((state) => state.movie.movieVideo);
+
   useEffect(() => {
     dispatch(getOverview(id));
     dispatch(getVideo(id));
     dispatch(getMovieCast(id));
   }, []);
 
-  const movieOverview = useSelector((state) => state.movie.movieOverview);
-  const movieVideo = useSelector((state) => state.movie.movieVideo);
-  const movieCast = useSelector((state) => state.movie.movieCast).slice(0,3);
-
-console.log(movieCast);
+  
+  // console.log(movieCast);
 
   const {
     runningTimeInMinutes,
@@ -174,7 +179,7 @@ console.log(movieCast);
         </Typography>
       </Grid>
       <Grid className="" item xs={6}>
-        <Actors actors={movieCast} />
+        <Actors />
       </Grid>
       <Grid item xs={6}>
         <iframe

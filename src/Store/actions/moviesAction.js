@@ -8,37 +8,17 @@ import {
   VIDEO_SELECTED_MOVIE,
   VIDEO_SELECTED_SUCCESS,
   VIDEO_SELECTED_FAILURE,
-  FETCH_SELECTED_ACTOR,
-  FETCH_ACTOR_SUCCESS,
-  FETCH_MOVIE_CAST,
+  FETCH_MOVIE_CAST
 } from "./actionTypes";
 
 const apiKey = {
   "x-rapidapi-host": "imdb8.p.rapidapi.com",
-  "x-rapidapi-key": "1ae19b9432mshe8b9662cdd17461p173560jsn0a2399503d35",
+  "x-rapidapi-key": "7ddaa2c9eemsh51258b6a7c59707p18932ejsn57939c77d62d",
 };
 export const deleteMovie = (id) => {
   return {
     type: "DELETE_MOVIE",
     id,
-  };
-};
-export const fetchActor = (actor) => {
-  return (dispatch) => {
-    fetch(`https://imdb8.p.rapidapi.com/actors/get-bio?nconst=${actor}`, {
-      method: "GET",
-      headers: apiKey,
-    })
-      .then((response) => response.json())
-      .then((data) => dispatch({ type: FETCH_SELECTED_ACTOR, payload: data }))
-      .then(dispatch(fetchActorSuccess()))
-      .catch((err) => {});
-  };
-};
-
-const fetchActorSuccess = () => {
-  return {
-    type: FETCH_ACTOR_SUCCESS,
   };
 };
 

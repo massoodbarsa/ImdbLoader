@@ -1,14 +1,27 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Actor from "./Actor";
 import ActorInfo from "./ActorInfo";
 import "../css/actor.scss";
 import { Grid } from "@material-ui/core";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import { fetchActor } from "../Store/actions/moviesAction";
 
 function Actors(props) {
-  const actor = props.actors.map((item) => {
+  const dispatch = useDispatch();
+
+  const actorIds = useSelector((state) => state.movie.movieCast).slice(0, 3);
+
+  // console.log(movieCast);
+
+  // dispatch(fetchActor())
+
+  const actorId = actorIds&&actorIds.map((item) => {
+    // console.log(item);
+
     return (
       <div key={item} className="actors">
+
+        <p> {item}</p>
         <Actor
           // name={item.name}
           // characters={item.characters ? item.characters[0] : "..."}
@@ -20,22 +33,26 @@ function Actors(props) {
 
   const ActorLoading = useSelector((state) => state.movie.ActorLoading);
 
-  const actorInfo = () => {
-    if (ActorLoading == false) {
-      return <ActorInfo />;
-    }
-  };
+  // const actorInfo = () => {
+  //   // if (ActorLoading == false) {
+  //     return <ActorInfo />;
+  //   // }
+  // };
 
   return (
     <div>
-      <h2>Actors</h2>
+      <h2>Actor</h2>
 
       <Grid className="actors-container" container>
         <Grid item item xs={4} className="movie_actors">
-          {actor}
+          {/* <Actor
+          // name={item.name}
+          // characters={item.characters ? item.characters[0] : "..."}
+          // Casts={props.movieCast}
+          /> */}
         </Grid>
         <Grid item xs={8} className="movie_actors_info">
-          {actorInfo()}
+          {/* {actorId} */}
         </Grid>
       </Grid>
     </div>

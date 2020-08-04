@@ -2,11 +2,7 @@ import React from "react";
 import "../css/movies.scss";
 import { Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import {
-  deleteMovie,
-  getOverview,
-  getVideo,
-} from "../Store/actions/moviesAction";
+import { deleteMovie } from "../Store/actions/moviesAction";
 import { Grid, Button } from "@material-ui/core";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faForward, faTrash } from "@fortawesome/free-solid-svg-icons";
@@ -16,12 +12,6 @@ function Movies(props) {
 
   const handleDelete = () => {
     dispatch(deleteMovie(props.id));
-  };
-
-  const handlSelectMovie = () => {
-    // dispatch(getOverview(props.id.slice(7)));
-    // dispatch(getVideo(props.id.slice(7)));
-    console.log(clicked);
   };
 
   const url =
@@ -53,7 +43,7 @@ function Movies(props) {
           </div>
         </Grid>
         <Grid className="movie_button_area" item xs={2}>
-          <Link to={"/" + props.id.slice(7)} >
+          <Link to={"/" + props.id.slice(7)}>
             <Button color="primary" variant="contained">
               <FontAwesomeIcon icon={faForward} size="2x" color="#ffffff" />
             </Button>

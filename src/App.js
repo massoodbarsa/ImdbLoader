@@ -4,6 +4,7 @@ import "./App.scss";
 import Imdb from "./components/Imdb";
 import Movie from "./components/Movie";
 import ActorInfo from "./components/ActorInfo";
+// import Actor from "./components/Actor";
 
 import { Link } from "react-router-dom";
 import Grid from "@material-ui/core/Grid";
@@ -40,6 +41,7 @@ function App() {
       <Switch>
         <Route exact path="/" component={Imdb} />
         <Route path="/:movie_id" component={Movie} />
+        {/* <Route path="actor/:movie_id" component={Actor} /> */}
       </Switch>
 
       {/* <Route path="actor_info/:actor_id" component={ActorInfo} /> */}

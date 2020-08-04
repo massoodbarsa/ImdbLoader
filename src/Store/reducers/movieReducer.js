@@ -8,8 +8,6 @@ import {
   VIDEO_SELECTED_MOVIE,
   VIDEO_SELECTED_SUCCESS,
   VIDEO_SELECTED_FAILURE,
-  FETCH_SELECTED_ACTOR,
-  FETCH_ACTOR_SUCCESS,
   FETCH_MOVIE_CAST,
 } from "../actions/actionTypes";
 
@@ -19,9 +17,7 @@ const initState = {
   movies: [],
   movieOverview: [],
   movieVideo: [],
-  actor: {},
-  movieCast:[],
-  ActorLoading: true,
+  movieCast: [],
 };
 
 const movieReducer = (state = initState, action) => {
@@ -65,16 +61,6 @@ const movieReducer = (state = initState, action) => {
       return {
         ...state,
         movieVideo: action.selectedItem,
-      };
-    case FETCH_SELECTED_ACTOR:
-      return {
-        ...state,
-        actor: action.payload,
-      };
-    case FETCH_ACTOR_SUCCESS:
-      return {
-        ...state,
-        ActorLoading: false,
       };
 
     case FETCH_MOVIE_CAST:
