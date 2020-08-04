@@ -5,17 +5,16 @@ import {
 
 const initState = {
   error: "",
-  actor: {},
+  actors:[],
   actorLoading: true,
 };
 
 const actorReducer = (state = initState, action) => {
-  // console.log(action.type);
   switch (action.type) {
     case FETCH_SELECTED_ACTOR:
       return {
         ...state,
-        actor: action.payload,
+        actors: [...state.actors,action.payload],
       };
     case FETCH_ACTOR_SUCCESS:
       return {

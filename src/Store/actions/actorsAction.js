@@ -14,7 +14,7 @@ import {
 
 const apiKey = {
   "x-rapidapi-host": "imdb8.p.rapidapi.com",
-  "x-rapidapi-key": "7ddaa2c9eemsh51258b6a7c59707p18932ejsn57939c77d62d",
+  "x-rapidapi-key": "42a48a5d8emshccccc5aa232416fp1039dfjsna66bdbb8b777"
 };
 
 export const fetchActor = (actor) => {

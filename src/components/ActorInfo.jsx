@@ -17,9 +17,9 @@ console.log(actor);
     <div>
 
       <Typography color="textSecondary">Name</Typography>
-      {/* <Typography component="p">{actor?actor.name:''}</Typography> */}
+      <Typography component="p">{actor?actor.name:''}</Typography> */}
 
-      {/* <Typography color="textSecondary">BirthDate</Typography>
+     <Typography color="textSecondary">BirthDate</Typography> 
       <Typography component="p">{actor.birthDate}</Typography>
 
       <Typography color="textSecondary">BirthPlace</Typography>
@@ -29,7 +29,7 @@ console.log(actor);
       <Typography component="p">{actor.gender}</Typography>
 
       <Typography color="textSecondary">Height</Typography>
-      <Typography component="p">{actor.heightCentimeters}</Typography> */}
+      <Typography component="p">{actor.heightCentimeters}</Typography>
     </div>
   );
 }

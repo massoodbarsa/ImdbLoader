@@ -8,10 +8,9 @@ import {
   getOverview,
   getVideo,
   getMovieCast,
-  fetchActor
+  fetchActor,
 } from "../Store/actions/moviesAction";
 // import { fetchActor } from "../Store/actions/moviesAction";
-
 
 function Movie(props) {
   let id = props.match.params.movie_id;
@@ -28,8 +27,6 @@ function Movie(props) {
 
   // const movieName = title ? title.title : "";
 
-  
-
   const movieOverview = useSelector((state) => state.movie.movieOverview);
   const movieVideo = useSelector((state) => state.movie.movieVideo);
 
@@ -39,7 +36,6 @@ function Movie(props) {
     dispatch(getMovieCast(id));
   }, []);
 
-  
   // console.log(movieCast);
 
   const {
@@ -111,18 +107,10 @@ function Movie(props) {
         </Typography>
 
         <Typography color="textSecondary" gutterBottom>
-          Start year
+          Year
         </Typography>
         <Typography variant="body2" component="p" className="movie-results">
-          {/* {seriesStartYear || "..."} */}
-          <br />
-        </Typography>
-
-        <Typography color="textSecondary" gutterBottom>
-          End year
-        </Typography>
-        <Typography variant="body2" component="p" className="movie-results">
-          {/* {seriesEndYear || "..."} */}
+          {title ? title.year : "..."}
           <br />
         </Typography>
 
@@ -152,7 +140,7 @@ function Movie(props) {
           Duration
         </Typography>
         <Typography variant="body2" component="p" className="movie-results">
-          {runningTimeInMinutes} min
+          {title ? title.runningTimeInMinutes : "..."}min
           <br />
         </Typography>
 

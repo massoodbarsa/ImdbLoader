@@ -11,48 +11,26 @@ function Actors(props) {
 
   const actorIds = useSelector((state) => state.movie.movieCast).slice(0, 3);
 
-  // console.log(movieCast);
-
-  // dispatch(fetchActor())
-
-  const actorId = actorIds&&actorIds.map((item) => {
-    // console.log(item);
-
-    return (
-      <div key={item} className="actors">
-
-        <p> {item}</p>
-        <Actor
-          // name={item.name}
-          // characters={item.characters ? item.characters[0] : "..."}
-          id={item}
-        />
-      </div>
-    );
-  });
+  const actor =
+    actorIds &&
+    actorIds.map((item) => {
+      return (
+        <div key={item} className="actors">
+          <Actor id={item} />
+        </div>
+      );
+    });
 
   const ActorLoading = useSelector((state) => state.movie.ActorLoading);
 
-  // const actorInfo = () => {
-  //   // if (ActorLoading == false) {
-  //     return <ActorInfo />;
-  //   // }
-  // };
-
   return (
     <div>
-      <h2>Actor</h2>
+      <h2>Actors</h2>
 
       <Grid className="actors-container" container>
-        <Grid item item xs={4} className="movie_actors">
-          {/* <Actor
-          // name={item.name}
-          // characters={item.characters ? item.characters[0] : "..."}
-          // Casts={props.movieCast}
-          /> */}
-        </Grid>
-        <Grid item xs={8} className="movie_actors_info">
-          {/* {actorId} */}
+        <Grid item item xs={3} className="movie_actors"></Grid>
+        <Grid item xs={9} className="movie_actors_info">
+          {actor}
         </Grid>
       </Grid>
     </div>
