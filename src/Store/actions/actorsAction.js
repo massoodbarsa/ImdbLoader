@@ -1,20 +1,12 @@
 import {
-  FETCH_SEARCHED_MOVIE,
-  FETCH_SEARCHED_MOVIE_SUCCESS,
-  FETCH_SEARCHED_MOVIE_FAILURE,
-  OVERVIEW_SELECTED_MOVIE,
-  OVERVIEW_SELECTED_SUCCESS,
-  OVERVIEW_SELECTED_FAILURE,
-  VIDEO_SELECTED_MOVIE,
-  VIDEO_SELECTED_SUCCESS,
-  VIDEO_SELECTED_FAILURE,
   FETCH_SELECTED_ACTOR,
   FETCH_ACTOR_SUCCESS,
+  CLEAN_PERV_ACTORS,
 } from "./actionTypes";
 
 const apiKey = {
   "x-rapidapi-host": "imdb8.p.rapidapi.com",
-	"x-rapidapi-key": "7b84827559mshe657f27b17ec84dp13e4c3jsn1ef80462b1b4",
+  "x-rapidapi-key": "7b84827559mshe657f27b17ec84dp13e4c3jsn1ef80462b1b4",
 };
 
 export const fetchActor = (actor) => {
@@ -23,6 +15,7 @@ export const fetchActor = (actor) => {
       method: "GET",
       headers: apiKey,
     })
+      .then(dispatch(cleanPervActores()))
       .then((response) => response.json())
       .then((data) => dispatch({ type: FETCH_SELECTED_ACTOR, payload: data }))
       .then(dispatch(fetchActorSuccess()))
@@ -33,5 +26,11 @@ export const fetchActor = (actor) => {
 const fetchActorSuccess = () => {
   return {
     type: FETCH_ACTOR_SUCCESS,
+  };
+};
+
+const cleanPervActores = () => {
+  return {
+    type: CLEAN_PERV_ACTORS,
   };
 };

@@ -1,7 +1,10 @@
 import {
   FETCH_SELECTED_ACTOR,
   FETCH_ACTOR_SUCCESS,
+  CLEAN_PERV_ACTORS
 } from "../actions/actionTypes";
+
+let actors = new Set()
 
 const initState = {
   error: "",
@@ -21,6 +24,11 @@ const actorReducer = (state = initState, action) => {
         ...state,
         ActorLoading: false,
       };
+      case CLEAN_PERV_ACTORS:
+        return {
+          ...state,
+          actors: [],
+        };
   }
   return state;
 };

@@ -43,7 +43,6 @@ function Movie(props) {
     trailerId = trailers && trailers.map((item) => item.id.slice(9));
   }
 
-  console.log(resource&&resource.videos[0]);
 
   const gener =
     genres &&
