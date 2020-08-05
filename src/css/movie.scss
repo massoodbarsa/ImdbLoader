@@ -41,12 +41,13 @@
 }
 
 #movie_trailer {
-  margin-bottom: 90px;
-  width: 80%;
-  height: 400px;
+  width: 100%;
+  height: 500px;
   overflow-y: hidden;
   position: relative;
-  right: -10%;
+  right: 30%;
+  bottom: 30px;
+  border-radius: 10px;
 }
 
 .movie-info {

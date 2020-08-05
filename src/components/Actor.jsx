@@ -1,14 +1,11 @@
 import React, { useEffect } from "react";
-// import { Typography, Grid } from "@material-ui/core";
 import { useDispatch, useSelector } from "react-redux";
 import "../css/actor.scss";
 import { fetchActor } from "../Store/actions/actorsAction";
 import {
   Grid,
-  CircularProgress,
   List,
   ListItem,
-  Divider,
   ListItemText,
   ListItemAvatar,
   Avatar,
@@ -43,17 +40,16 @@ function Actor(props) {
     actors.map((item) => {
       if (item.id === props.id) {
         return (
-          <Grid container key={item.id} className="actors">
+          <Grid key={item.id}>
             <List className={classes.root}>
               <ListItem alignItems="flex-start">
                 <ListItemAvatar>
-                  <Avatar alt="Avtor avatar" src={item.image.url}/>
+                  <Avatar alt="Avtor avatar" src={item.image.url} />
                 </ListItemAvatar>
                 <ListItemText
                   primary={item.name}
                   secondary={
                     <React.Fragment>
-              
                       <Typography color="textSecondary">Name</Typography>
                       <Typography
                         component="span"
@@ -99,14 +95,11 @@ function Actor(props) {
                       >
                         {item.heightCentimeters}
                       </Typography>
-                      {/* {" — I'll be in your neighborhood doing errands this…"} */}
                     </React.Fragment>
                   }
                 />
               </ListItem>
-              {/* <Divider variant="inset" component="li" /> */}
             </List>
-         
           </Grid>
         );
       }

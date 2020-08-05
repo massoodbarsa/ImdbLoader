@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from "react-redux";
 import "../css/movie.scss";
 import { Grid, Typography } from "@material-ui/core";
 import Actors from "./Actors";
-import CircularProgress from "@material-ui/core/CircularProgress";
+import { CircularProgress } from "@material-ui/core";
 import {
   getOverview,
   getVideo,
@@ -14,7 +14,6 @@ function Movie(props) {
   let id = props.match.params.movie_id;
 
   const dispatch = useDispatch();
-
   const movieOverview = useSelector((state) => state.movie.movieOverview);
   const movieVideo = useSelector((state) => state.movie.movieVideo);
 
@@ -24,14 +23,7 @@ function Movie(props) {
     dispatch(getMovieCast(id));
   }, []);
 
-  const {
-    runningTimeInMinutes,
-    title,
-    ratings,
-    genres,
-    releaseDate,
-    plotSummary,
-  } = movieOverview;
+  const { title, ratings, genres, releaseDate, plotSummary } = movieOverview;
 
   const resource = movieVideo.resource;
 
@@ -116,7 +108,7 @@ function Movie(props) {
           Duration
         </Typography>
         <Typography variant="body2" component="p" className="movie-results">
-          {title ? title.runningTimeInMinutes : "..."}min
+          {title ? title.runningTimeInMinutes : "..."} min
           <br />
         </Typography>
 
@@ -138,14 +130,18 @@ function Movie(props) {
           className="movie-results"
           id="summary"
         >
-          {plotSummary ? plotSummary.text : <CircularProgress />}
+          {plotSummary ? (
+            plotSummary.text
+          ) : (
+            <CircularProgress color="secondary" />
+          )}
           <br />
         </Typography>
       </Grid>
-      <Grid className="" item xs={6}>
+      <Grid className="" item xs={8}>
         <Actors />
       </Grid>
-      <Grid item xs={6}>
+      <Grid item xs={4}>
         <iframe
           src={` https://www.imdb.com/video/imdb/${
             trailerId ? trailerId[0] : null

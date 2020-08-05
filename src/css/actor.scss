@@ -1,6 +1,6 @@
 .actors {
-  padding: 10px;
-  margin: 10px;
+  // padding: 10px;
+  margin: 20px;
   display: inline;
 }
 
@@ -11,8 +11,10 @@
 }
 
 .movie_actors_info {
-  right: 15%;
+  // right: 20%;
   position: relative;
+  display: flex;
+  justify-content: space-between;
 }
 
 //actor

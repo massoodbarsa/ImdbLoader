@@ -8,6 +8,7 @@ import { fetchMovieFromApi } from "../Store/actions/moviesAction";
 import { Link } from "react-router-dom";
 
 function searchBar(props) {
+  console.log(props);
   const [search, setSearch] = useState({
     searchItem: "",
   });
