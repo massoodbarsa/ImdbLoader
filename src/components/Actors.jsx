@@ -5,7 +5,7 @@ import { Grid } from "@material-ui/core";
 import { useSelector } from "react-redux";
 
 function Actors(props) {
-  const actorIds = useSelector((state) => state&&state.movie.movieCast);
+  const actorIds = useSelector((state) => state && state.movie.movieCast);
 
   const actor =
     actorIds &&

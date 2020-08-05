@@ -13,7 +13,7 @@ import {
 
 const apiKey = {
   "x-rapidapi-host": "imdb8.p.rapidapi.com",
-  "x-rapidapi-key": "42a48a5d8emshccccc5aa232416fp1039dfjsna66bdbb8b777"
+	"x-rapidapi-key": "7b84827559mshe657f27b17ec84dp13e4c3jsn1ef80462b1b4",
 };
 export const deleteMovie = (id) => {
   return {
