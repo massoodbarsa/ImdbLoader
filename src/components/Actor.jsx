@@ -1,12 +1,35 @@
 import React, { useEffect } from "react";
-import { Typography, Grid } from "@material-ui/core";
-import { Link } from "react-router-dom";
+// import { Typography, Grid } from "@material-ui/core";
 import { useDispatch, useSelector } from "react-redux";
 import "../css/actor.scss";
-import ActorInfo from "./ActorInfo";
 import { fetchActor } from "../Store/actions/actorsAction";
+import {
+  Grid,
+  CircularProgress,
+  List,
+  ListItem,
+  Divider,
+  ListItemText,
+  ListItemAvatar,
+  Avatar,
+  Typography,
+} from "@material-ui/core";
+import { makeStyles } from "@material-ui/core/styles";
+
+const useStyles = makeStyles((theme) => ({
+  root: {
+    width: "100%",
+    maxWidth: "36ch",
+    backgroundColor: theme.palette.background.paper,
+  },
+  inline: {
+    display: "inline",
+  },
+}));
 
 function Actor(props) {
+  const classes = useStyles();
+
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -21,23 +44,69 @@ function Actor(props) {
       if (item.id === props.id) {
         return (
           <Grid container key={item.id} className="actors">
-            <Grid item item xs={4}>
-              <Typography color="textSecondary">Name</Typography>
-              <Typography component="p">{item ? item.name : ""}</Typography>
-              <Typography color="textSecondary">BirthDate</Typography>
-              <Typography component="p">{item.birthDate}</Typography>
-              <Typography color="textSecondary">BirthPlace</Typography>
-              <Typography component="p">{item.birthPlace}</Typography>
-              <Typography color="textSecondary">Gender</Typography>
-              <Typography component="p">{item.gender}</Typography>
-              <Typography color="textSecondary">Height</Typography>
-              <Typography component="p">
-                {item.heightCentimeters}
-              </Typography>{" "}
-            </Grid>
-            <Grid item item xs={8}>
-              <img src={item.image.url} alt="" className="movie-image" />
-            </Grid>
+            <List className={classes.root}>
+              <ListItem alignItems="flex-start">
+                <ListItemAvatar>
+                  <Avatar alt="Avtor avatar" src={item.image.url}/>
+                </ListItemAvatar>
+                <ListItemText
+                  primary={item.name}
+                  secondary={
+                    <React.Fragment>
+              
+                      <Typography color="textSecondary">Name</Typography>
+                      <Typography
+                        component="span"
+                        variant="body2"
+                        className={classes.inline}
+                        color="textPrimary"
+                      >
+                        {item ? item.name : ""}
+                      </Typography>
+                      <Typography color="textSecondary">BirthDate</Typography>
+                      <Typography
+                        component="span"
+                        variant="body2"
+                        className={classes.inline}
+                        color="textPrimary"
+                      >
+                        {item.birthDate}
+                      </Typography>
+                      <Typography color="textSecondary">BirthPlace</Typography>
+                      <Typography
+                        component="span"
+                        variant="body2"
+                        className={classes.inline}
+                        color="textPrimary"
+                      >
+                        {item.birthPlace}
+                      </Typography>
+                      <Typography color="textSecondary">Gender</Typography>
+                      <Typography
+                        component="span"
+                        variant="body2"
+                        className={classes.inline}
+                        color="textPrimary"
+                      >
+                        {item.gender}
+                      </Typography>
+                      <Typography color="textSecondary">Height</Typography>
+                      <Typography
+                        component="span"
+                        variant="body2"
+                        className={classes.inline}
+                        color="textPrimary"
+                      >
+                        {item.heightCentimeters}
+                      </Typography>
+                      {/* {" — I'll be in your neighborhood doing errands this…"} */}
+                    </React.Fragment>
+                  }
+                />
+              </ListItem>
+              {/* <Divider variant="inset" component="li" /> */}
+            </List>
+         
           </Grid>
         );
       }

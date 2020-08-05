@@ -1,14 +1,10 @@
 import React, { useEffect } from "react";
 import Actor from "./Actor";
-import ActorInfo from "./ActorInfo";
 import "../css/actor.scss";
 import { Grid } from "@material-ui/core";
-import { useSelector, useDispatch } from "react-redux";
-import { fetchActor } from "../Store/actions/moviesAction";
+import { useSelector } from "react-redux";
 
 function Actors(props) {
-  const dispatch = useDispatch();
-
   const actorIds = useSelector((state) => state.movie.movieCast).slice(0, 3);
 
   const actor =

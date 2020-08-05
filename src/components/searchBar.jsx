@@ -45,14 +45,16 @@ function searchBar(props) {
           color="primary"
           onKeyDown={(e) => onKeyPressed(e)}
         />
-        <a
+        <Link
           className="btn-floating btn-large waves-effect waves-light cyan lighten-2 "
           onClick={handleClick}
+          to="/"
         >
           <Button color="primary">
             <FontAwesomeIcon icon={faSearch} size="2x" color="#286b92" />
           </Button>
-        </a>
+        </Link>
+
         <Link to="/">
           <Badge color="secondary" badgeContent={pageContentLength()}>
             <FontAwesomeIcon icon={faFileDownload} size="2x" color="#286b92" />

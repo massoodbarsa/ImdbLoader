@@ -8,24 +8,12 @@ import {
   getOverview,
   getVideo,
   getMovieCast,
-  fetchActor,
 } from "../Store/actions/moviesAction";
-// import { fetchActor } from "../Store/actions/moviesAction";
 
 function Movie(props) {
   let id = props.match.params.movie_id;
 
-  // const movies = useSelector((state) =>
-  //   state.movie.movies.find((i) => i.id == `/title/${id}/`)
-  // );
-
   const dispatch = useDispatch();
-
-  // const [loading, setLoading] = useState({
-  //   loading: true,
-  // });
-
-  // const movieName = title ? title.title : "";
 
   const movieOverview = useSelector((state) => state.movie.movieOverview);
   const movieVideo = useSelector((state) => state.movie.movieVideo);
@@ -35,8 +23,6 @@ function Movie(props) {
     dispatch(getVideo(id));
     dispatch(getMovieCast(id));
   }, []);
-
-  // console.log(movieCast);
 
   const {
     runningTimeInMinutes,
@@ -64,16 +50,6 @@ function Movie(props) {
 
     trailerId = trailers && trailers.map((item) => item.id.slice(9));
   }
-
-  // const {
-  // title,
-  // image,
-  // titleType,
-  // seriesStartYear,
-  // seriesEndYear,
-  // runningTimeInMinutes,
-  //   principals,
-  // } = movies;
 
   const gener =
     genres &&
